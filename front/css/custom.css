@@ -1,0 +1,28 @@
+html,body{
+	height: 100vh;
+  background: url('../img/2.jpg') no-repeat center center;
+  background-size: cover;
+  background-color: #220d0e;
+}
+
+.bg-soft-dark {
+  background-color: rgba(0,0,0, .2);
+}
+
+#page-content {
+  flex: 1 0 auto;
+}
+
+#sticky-footer {
+  flex-shrink: none;
+}
+
+.notify-badge {
+    position: absolute;
+    left: 5px;
+    top: 5px;
+    background: red;
+	text-align: center;
+	color: white;
+    padding: 5px 10px;
+}
