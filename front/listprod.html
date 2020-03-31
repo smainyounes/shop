@@ -33,7 +33,7 @@
   <body class="d-flex flex-column bg-secondary">
     
     <nav class="navbar navbar-expand-md navbar-dark bg-dark shadow">
-      <a class="navbar-brand" href="index.html">BoxDz-Shop</a>
+      <a class="navbar-brand" href="listprod.html">Admin</a>
       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
@@ -41,24 +41,16 @@
       <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <ul class="navbar-nav ml-auto">
           <li class="nav-item">
-            <a class="nav-link" href="index.html">Home</a>
-          </li>
-          <li class="nav-item dropdown ">
-                  <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                    Categories
-                  </a>
-                  <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                    <a class="dropdown-item" href="index.php">Tout</a>
-                    <a class="dropdown-item" href="index.php?categ=1">Telephone</a>
-                    <a class="dropdown-item" href="index.php?categ=2">Chargeurs</a>
-                    <a class="dropdown-item" href="index.php?categ=4">Glass</a>
-                  </div>
+            <a class="nav-link" href="listprod.html">Product List</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="index.html">Contact</a>
+            <a class="nav-link" href="listcateg.html">Category List</a>
           </li>
           <li class="nav-item">
-            <a href="login.html" class="btn btn-secondary">Login</a>
+            <a class="nav-link" href="settings.html">Settings</a>
+          </li>
+          <li class="nav-item">
+            <a href="index.html" class="btn btn-secondary">Logout</a>
           </li>
         </ul>
       </div>
@@ -101,7 +93,8 @@
 
 
     <div class="container shadow bg-light py-2" id="page-content">
-        <div class="h1 text-center animated fadeInUp font-weight-bold">Search</div>
+        <div class="h1 text-center animated fadeInUp font-weight-bold">Product List</div>
+        <a class="btn btn-primary btn-lg btn-block m-2 animated fadeInUp" href="newprod.html">Ajouter</a>
         <div class="row animated fadeInUp">
           <div class="col-lg-4 col-md-6 mb-4">
             <div class="card mx-2 h-100">
@@ -112,66 +105,10 @@
                 </h4>
                 
                 <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Amet numquam aspernatur!</p>
-              </div>
-              <div class="card-footer">
-                <h5 class="text-center">12 000 DA</h5>
-              </div>
-            </div>
-          </div>
-          <div class="col-lg-4 col-md-6 mb-4">
-            <div class="card mx-2 h-100">
-              <a href="detail.html"><img class="card-img-top" src="img/exemples/1.jpg" alt=""></a>
-              <div class="card-body">
-                <h4 class="card-title">
-                  <a href="detail.html">Item Name</a>
-                </h4>
-                
-                <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Amet numquam aspernatur!</p>
-              </div>
-              <div class="card-footer">
-                <h5 class="text-center">12 000 DA</h5>
-              </div>
-            </div>
-          </div>
-          <div class="col-lg-4 col-md-6 mb-4">
-            <div class="card mx-2 h-100">
-              <a href="detail.html"><img class="card-img-top" src="img/exemples/1.jpg" alt=""></a>
-              <div class="card-body">
-                <h4 class="card-title">
-                  <a href="detail.html">Item Name</a>
-                </h4>
-                
-                <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Amet numquam aspernatur!</p>
-              </div>
-              <div class="card-footer">
-                <h5 class="text-center">12 000 DA</h5>
-              </div>
-            </div>
-          </div>
-          <div class="col-lg-4 col-md-6 mb-4">
-            <div class="card mx-2 h-100">
-              <a href="detail.html"><img class="card-img-top" src="img/exemples/1.jpg" alt=""></a>
-              <div class="card-body">
-                <h4 class="card-title">
-                  <a href="detail.html">Item Name</a>
-                </h4>
-                
-                <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Amet numquam aspernatur!</p>
-              </div>
-              <div class="card-footer">
-                <h5 class="text-center">12 000 DA</h5>
-              </div>
-            </div>
-          </div>
-          <div class="col-lg-4 col-md-6 mb-4">
-            <div class="card mx-2 h-100">
-              <a href="detail.html"><img class="card-img-top" src="img/exemples/1.jpg" alt=""></a>
-              <div class="card-body">
-                <h4 class="card-title">
-                  <a href="detail.html">Item Name</a>
-                </h4>
-                
-                <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Amet numquam aspernatur!</p>
+                <div class="float-right">
+                 <button class="btn btn-danger" data-toggle="modal" data-target="#exampleModalCenter" data-id="15">Delete</button>
+                  <button class="btn btn-warning">Edit</button>
+                </div>
               </div>
               <div class="card-footer">
                 <h5 class="text-center">12 000 DA</h5>
@@ -180,6 +117,38 @@
           </div>
         </div>
      
+     <!-- delete modal -->
+     <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+       <div class="modal-dialog modal-dialog-centered" role="document">
+         <div class="modal-content">
+           <div class="modal-header">
+             <h5 class="modal-title" id="exampleModalCenterTitle">Confirmation</h5>
+             <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+               <span aria-hidden="true">&times;</span>
+             </button>
+           </div>
+           <div class="modal-body">
+             are u sure u want to delete this product?
+           </div>
+           <div class="modal-footer">
+             <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+             <form method="POST">
+               <input type="number" name="prod" id="prod" hidden>
+               <button class="btn btn-primary">Yes</button>
+             </form>
+           </div>
+         </div>
+       </div>
+     </div>
+
+     <script type="text/javascript">
+       $('#exampleModalCenter').on('show.bs.modal', function (event) {
+         var button = $(event.relatedTarget) // Button that triggered the modal
+         var id = button.data('id') 
+         $('#prod').val(id);
+       });
+     </script>
+
     </div>
 
     <footer class="py-3 bg-dark shadow" id="sticky-footer">

@@ -1,0 +1,196 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="vendor/bootstrap/css/bootstrap.min.css">
+
+    <!-- slick css -->
+    <link rel="stylesheet" type="text/css" href="vendor/slick/slick.css">
+    <link rel="stylesheet" type="text/css" href="vendor/slick/slick-theme.css"/>
+
+    <!-- font awesome -->
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css">
+
+    <!-- animate css -->
+    <link rel="stylesheet" type="text/css" href="vendor/animatecss/animate.css">
+
+    <!-- custom css -->
+    <link rel="stylesheet" href="css/custom.css">
+
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="vendor/jquery/jquery.slim.min.js"></script>
+    <script src="vendor/slick/slick.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"></script>
+    <script src="vendor/bootstrap/js/bootstrap.min.js"></script>
+
+    <title>BoxDZ | Shop</title>
+  </head>
+  <body class="d-flex flex-column bg-secondary">
+    
+    <nav class="navbar navbar-expand-md navbar-dark bg-dark shadow">
+      <a class="navbar-brand" href="listprod.html">Admin</a>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav ml-auto">
+          <li class="nav-item">
+            <a class="nav-link" href="listprod.html">Product List</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="listcateg.html">Category List</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="settings.html">Settings</a>
+          </li>
+          <li class="nav-item">
+            <a href="index.html" class="btn btn-secondary">Logout</a>
+          </li>
+        </ul>
+      </div>
+    </nav>
+    <div class="container p-0 search">
+      <div class="container-fluid" style="background: linear-gradient(rgba(0,0,0,.2), rgba(0,0,0,.8));">
+        <div class="container">
+          <div class="row">
+            <div class="col-md-4 text-center animated fadeInLeft">
+              <img src="img/boxdzlogo.png" class="img-fluid">
+            </div>
+            <div class="col-md-8 animated fadeInRight">
+              <form class="w-100 h-100 d-flex align-items-center justify-content-center">
+                <div class="form-group">
+                  <div class="input-group input-group-lg" style="max-width: 900px;">
+                    <input type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-lg" placeholder="Exemple: something">
+                    <div class="input-group-append">
+                      <span class="input-group-text fas fa-search" id="inputGroup-sizing-lg"></span>
+                    </div>
+                  </div>
+                </div>
+                <div class="form-group mx-2">
+                  <select class="form-control form-control-lg">
+                    <option selected>Tout</option>
+                    <option>Chargeur</option>
+                    <option>Phone</option>
+                    <option>Glass</option>
+                  </select>
+                </div>
+                <div class="form-group">
+                  <a href="search.html" class="btn btn-primary btn-lg">Search</a>
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+
+    <div class="container shadow bg-light py-2" id="page-content">
+        <div class="h1 text-center animated fadeInUp font-weight-bold">Category List</div>
+        <div class="btn btn-primary btn-lg btn-block m-2 animated fadeInUp" data-toggle="modal" data-target="#exampleModal">Ajouter</div>
+        <table class="table mx-2 table-hover table-bordered animated fadeInUp">
+          <thead>
+            <tr>
+              <th scope="col">id</th>
+              <th scope="col">Nom Categorie</th>
+              <th scope="col">Supprimer</th>
+            </tr>
+          </thead>
+          <tbody>
+              <tr>
+                <td>1</td>
+                <td>Phone</td>
+                <td><button class="btn btn-danger" data-toggle="modal" data-target="#exampleModalCenter" data-id="15">Supprimer</button></td>
+              </tr>   
+              <tr>
+                <td>2</td>
+                <td>Glass</td>
+                <td><button class="btn btn-danger" data-toggle="modal" data-target="#exampleModalCenter" data-id="15">Supprimer</button></td>
+              </tr>   
+              <tr>
+                <td>4</td>
+                <td>Chargeur</td>
+                <td><button class="btn btn-danger" data-toggle="modal" data-target="#exampleModalCenter" data-id="15">Supprimer</button></td>
+              </tr>   
+              <tr>
+                <td>5</td>
+                <td>hi</td>
+                <td><button class="btn btn-danger" data-toggle="modal" data-target="#exampleModalCenter" data-id="15">Supprimer</button></td>
+              </tr>   
+          </tbody>
+        </table>
+     
+        <!-- Adding Modal -->
+        <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+          <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Ajouter Categorie</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                  <span aria-hidden="true">&times;</span>
+                </button>
+              </div>
+              <form method="POST">
+                <div class="modal-body">
+                    <div class="form-group">
+                      <label for="exampleFormControlInput1">Nom Categorie</label>
+                      <input type="text" class="form-control" id="exampleFormControlInput1" placeholder="Nom Categorie" name="categ_name">
+                    </div>
+                </div>
+                <div class="modal-footer">
+                  <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                  <button type="submit" type="button" class="btn btn-primary" name="newcateg">Ajouter</button>
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+
+        <!-- delete modal -->
+        <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+          <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalCenterTitle">Confirmation</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                  <span aria-hidden="true">&times;</span>
+                </button>
+              </div>
+              <div class="modal-body">
+                are u sure u want to delete this category?
+              </div>
+              <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                <form method="POST">
+                  <input type="number" name="categ" id="categ" hidden>
+                  <button class="btn btn-primary">Yes</button>
+                </form>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <script type="text/javascript">
+          $('#exampleModalCenter').on('show.bs.modal', function (event) {
+            var button = $(event.relatedTarget) // Button that triggered the modal
+            var id = button.data('id') 
+            $('#categ').val(id);
+          });
+        </script>
+    </div>
+
+    <footer class="py-3 bg-dark shadow" id="sticky-footer">
+      <div class="container">
+        <p class="m-0 text-center text-light">Copyright &copy; BoxDz 2020</p>
+      </div>
+    </footer>
+
+  </body>
+</html>

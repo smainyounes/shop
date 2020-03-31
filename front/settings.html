@@ -33,7 +33,7 @@
   <body class="d-flex flex-column bg-secondary">
     
     <nav class="navbar navbar-expand-md navbar-dark bg-dark shadow">
-      <a class="navbar-brand" href="index.html">BoxDz-Shop</a>
+      <a class="navbar-brand" href="listprod.html">Admin</a>
       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
@@ -41,24 +41,16 @@
       <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <ul class="navbar-nav ml-auto">
           <li class="nav-item">
-            <a class="nav-link" href="index.html">Home</a>
-          </li>
-          <li class="nav-item dropdown ">
-                  <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                    Categories
-                  </a>
-                  <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                    <a class="dropdown-item" href="index.php">Tout</a>
-                    <a class="dropdown-item" href="index.php?categ=1">Telephone</a>
-                    <a class="dropdown-item" href="index.php?categ=2">Chargeurs</a>
-                    <a class="dropdown-item" href="index.php?categ=4">Glass</a>
-                  </div>
+            <a class="nav-link" href="listprod.html">Product List</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="#contact">Contact</a>
+            <a class="nav-link" href="listcateg.html">Category List</a>
           </li>
           <li class="nav-item">
-            <a href="login.html" class="btn btn-secondary">Login</a>
+            <a class="nav-link" href="settings.html">Settings</a>
+          </li>
+          <li class="nav-item">
+            <a href="index.html" class="btn btn-secondary">Logout</a>
           </li>
         </ul>
       </div>
@@ -101,25 +93,55 @@
 
 
     <div class="container shadow bg-light py-2" id="page-content">
-       <div class="card mt-5 mx-auto animated fadeInUp" style="max-width: 400px;">
-              <article class="card-body">
-              <h4 class="card-title mb-4 mt-1">Sign in</h4>
-                 <form method="POST">
-                  <div class="form-group">
-                    <label>Username</label>
-                      <input name="username" class="form-control" placeholder="Username" type="text" required>
-                  </div> <!-- form-group// -->
-                  <div class="form-group">
-                    <label>Password</label>
-                      <input class="form-control" placeholder="******" type="password" name="password" required>
-                  </div> <!-- form-group// -->  
-                  <div class="form-group">
-                      <a href="listprod.html" class="btn btn-primary btn-block"> Login  </a>
-                  </div> <!-- form-group// -->
-                  <input type="text" name="token" value="" hidden>                                                           
-              </form>
-              </article>
-              </div> <!-- card.// -->
+        <div class="h1 text-center animated fadeInUp font-weight-bold">Settings</div>
+        <div class="my-3 animated fadeInUp">
+              <nav >
+                <div class="nav nav-tabs justify-content-center" id="nav-tab" role="tablist">
+                  <a class="nav-item nav-link active" id="nav-home-tab" data-toggle="tab" href="#nav-home" role="tab" aria-controls="nav-home" aria-selected="true">Home</a>
+                  <a class="nav-item nav-link" id="nav-profile-tab" data-toggle="tab" href="#nav-profile" role="tab" aria-controls="nav-profile" aria-selected="false">Password</a>
+                  <a class="nav-item nav-link" id="nav-contact-tab" data-toggle="tab" href="#nav-contact" role="tab" aria-controls="nav-contact" aria-selected="false">Contact</a>
+              </div>
+              </nav>
+              <div class="tab-content" id="nav-tabContent">
+                <div class="tab-pane fade show active pt-3" id="nav-home" role="tabpanel" aria-labelledby="nav-home-tab">
+                  <h3 class="text-center">Changer Nom d'utilisateur</h3>
+                  <form class="text-center" method="POST">
+                    <div class="form-group w-75 text-center mx-auto">
+                      <input type="text" class="form-control text-center" name="username" required placeholder="admin">
+                    </div>
+                    <button class="btn btn-primary">Confirmer</button>
+                  </form>
+                </div>
+                <div class="tab-pane fade pt-3" id="nav-profile" role="tabpanel" aria-labelledby="nav-profile-tab">
+                  <form class="text-center" method="POST">
+                    <h3 class="text-center">Changer Mot de passe</h3>
+                    <div class="form-group w-75 text-center mx-auto">
+                      <input type="password" class="form-control text-center my-2" placeholder="Old Password" name="old" required>
+                      <input type="password" class="form-control text-center my-2" placeholder="New Password" name="pass1" required>
+                      <input type="password" class="form-control text-center my-2" placeholder="Confirm Password" name="pass2" required>
+
+                    </div>
+                    <button class="btn btn-primary">Confirmer</button>
+                  </form>
+                </div>
+                  <div class="tab-pane fade active pt-3" id="nav-contact" role="tabpanel" aria-labelledby="nav-contact-tab">
+                    <h3 class="text-center">Contact Infos</h3>
+                    <form class="text-center" method="POST">
+                      <div class="form-group w-75 text-center mx-auto">
+                        <label>Email</label>
+                          <input type="email" class="form-control text-center" name="email" value="test@test.com" required>
+                          <label>Phones</label>
+                          <input type="text" class="form-control text-center" name="phone" value="123456789" required>
+                          <label>Address</label>
+                          <textarea class="form-control" rows="3" name="address" required>blida blida</textarea>
+                      </div>
+                      <button class="btn btn-primary">Confirmer</button>
+                    </form>
+                  </div>
+                </div>
+        </div>
+        
+
     </div>
 
     <footer class="py-3 bg-dark shadow" id="sticky-footer">

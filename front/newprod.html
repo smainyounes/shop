@@ -33,7 +33,7 @@
   <body class="d-flex flex-column bg-secondary">
     
     <nav class="navbar navbar-expand-md navbar-dark bg-dark shadow">
-      <a class="navbar-brand" href="index.html">BoxDz-Shop</a>
+      <a class="navbar-brand" href="#">BoxDz-Shop</a>
       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
@@ -41,24 +41,16 @@
       <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <ul class="navbar-nav ml-auto">
           <li class="nav-item">
-            <a class="nav-link" href="index.html">Home</a>
-          </li>
-          <li class="nav-item dropdown ">
-                  <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                    Categories
-                  </a>
-                  <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                    <a class="dropdown-item" href="index.php">Tout</a>
-                    <a class="dropdown-item" href="index.php?categ=1">Telephone</a>
-                    <a class="dropdown-item" href="index.php?categ=2">Chargeurs</a>
-                    <a class="dropdown-item" href="index.php?categ=4">Glass</a>
-                  </div>
+            <a class="nav-link" href="#">Product List</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="#contact">Contact</a>
+            <a class="nav-link" href="#">Category List</a>
           </li>
           <li class="nav-item">
-            <a href="login.html" class="btn btn-secondary">Login</a>
+            <a class="nav-link" href="#contact">Settings</a>
+          </li>
+          <li class="nav-item">
+            <button class="btn btn-secondary">Logout</button>
           </li>
         </ul>
       </div>
@@ -72,7 +64,7 @@
             </div>
             <div class="col-md-8 animated fadeInRight">
               <form class="w-100 h-100 d-flex align-items-center justify-content-center">
-                <div class="form-group">
+                <div class="form-group mr-2">
                   <div class="input-group input-group-lg" style="max-width: 900px;">
                     <input type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-lg" placeholder="Exemple: something">
                     <div class="input-group-append">
@@ -80,7 +72,7 @@
                     </div>
                   </div>
                 </div>
-                <div class="form-group mx-2">
+                <div class="form-group ml-2">
                   <select class="form-control form-control-lg">
                     <option selected>Tout</option>
                     <option>Chargeur</option>
@@ -88,9 +80,7 @@
                     <option>Glass</option>
                   </select>
                 </div>
-                <div class="form-group">
-                  <a href="search.html" class="btn btn-primary btn-lg">Search</a>
-                </div>
+                
               </form>
             </div>
           </div>
@@ -101,25 +91,39 @@
 
 
     <div class="container shadow bg-light py-2" id="page-content">
-       <div class="card mt-5 mx-auto animated fadeInUp" style="max-width: 400px;">
-              <article class="card-body">
-              <h4 class="card-title mb-4 mt-1">Sign in</h4>
-                 <form method="POST">
-                  <div class="form-group">
-                    <label>Username</label>
-                      <input name="username" class="form-control" placeholder="Username" type="text" required>
-                  </div> <!-- form-group// -->
-                  <div class="form-group">
-                    <label>Password</label>
-                      <input class="form-control" placeholder="******" type="password" name="password" required>
-                  </div> <!-- form-group// -->  
-                  <div class="form-group">
-                      <a href="listprod.html" class="btn btn-primary btn-block"> Login  </a>
-                  </div> <!-- form-group// -->
-                  <input type="text" name="token" value="" hidden>                                                           
-              </form>
-              </article>
-              </div> <!-- card.// -->
+        <div class="h1 text-center animated fadeInUp font-weight-bold">Add Product</div>
+        <!-- Form -->
+        <form class="my-3 animated fadeInUp" method="POST" enctype="multipart/form-data">
+          <div class="form-group">
+            <label for="exampleFormControlInput1">Nom du Produit</label>
+            <input type="text" class="form-control" id="exampleFormControlInput1" placeholder="Nom du Produit" name="nomprod" required>
+          </div>
+          <div class="form-group">
+            <label for="exampleFormControlSelect1">Categorie</label>
+            <select class="form-control" id="exampleFormControlSelect1" name="categ" required>
+              <option value="1">Phone</option>
+              <option value="2">Glass</option>
+              <option value="4">Chargeur</option>
+              <option value="5">Autre</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label>Prix (en DA)</label>
+            <input type="number" class="form-control" name="price" placeholder="1200" required>
+          </div>
+          <div class="form-group custom-file">
+            <input type="file" class="custom-file-input" id="customFile" multiple="" name="imgprod[]" required>
+            <label class="custom-file-label" for="customFile">Images du Produit</label>
+          </div>
+          <div class="form-group">
+            <label for="exampleFormControlTextarea1">Description</label>
+            <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" name="descprod" required></textarea>
+          </div>
+
+          <div class="form-group text-center">
+            <button class="btn btn-primary" name="addnew">Ajouter</button>
+          </div>
+        </form>
     </div>
 
     <footer class="py-3 bg-dark shadow" id="sticky-footer">
