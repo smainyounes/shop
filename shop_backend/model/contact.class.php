@@ -19,7 +19,8 @@
 
 		public function GetInfos()
 		{
-			# code...
+			$this->query("SELECT * shop_contact");
+			return $this->single();
 		}
 
 		/*
@@ -28,7 +29,17 @@
 
 		public function UpdateInfos()
 		{
-			# code...
+			$this->query("UPDATE shop_contact SET email = :email, phone = :phone, address = :address");
+			$this->bind(":email", strip_tags($_POST['email']));
+			$this->bind(":phone", strip_tags($_POST['phone']));
+			$this->bind(":address", strip_tags($_POST['address']));
+
+			try {
+				$this->execute();
+				return true;
+			} catch (Exception $e) {
+				return false;
+			}
 		}
 
 	}

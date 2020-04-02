@@ -17,7 +17,8 @@
 
 		public function GetAll()
 		{
-			# code...
+			$this->query("SELECT * FROM shop_category");
+			return $this->resultSet();
 		}
 
 		/**
@@ -26,12 +27,27 @@
 
 		public function AddNew()
 		{
-			# code...
+			$this->query("INSERT INTO shop_category(nom_category) VALUES(:nom)");
+			$this->bind(":nom", strip_tags($_POST['category']));
+			try {
+				$this->execute();
+				return true;
+			} catch (Exception $e) {
+				return false;
+			}
 		}
 
 		public function Delete($id_categ)
 		{
-			# code...
+			$this->query("DELETE FROM shop_category WHERE id_category = :id");
+			$this->bind(":id", $id_categ);
+
+			try {
+				$this->execute();
+				return true;
+			} catch (Exception $e) {
+				return false;
+			}
 		}
 
 	}
