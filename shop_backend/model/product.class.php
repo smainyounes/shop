@@ -8,7 +8,7 @@
 		
 		function __construct()
 		{
-			
+			parent::__construct();
 		}
 
 		/**
@@ -17,7 +17,7 @@
 	
 		public function GetAll()
 		{
-			$sql = "SELECT *
+			$sql = "SELECT *, id_product
 						FROM shop_product LEFT JOIN shop_images
 						ON shop_product.id_product = shop_images.id_product
 						WHERE NOT EXISTS(
@@ -32,7 +32,7 @@
 
 		public function Latest()
 		{
-			$sql = "SELECT *
+			$sql = "SELECT *, id_product
 						FROM shop_product LEFT JOIN shop_images
 						ON shop_product.id_product = shop_images.id_product
 						WHERE NOT EXISTS(
@@ -47,7 +47,7 @@
 
 		public function GetSingle($id_prod)
 		{
-			$sql = "SELECT *
+			$sql = "SELECT *, id_product
 						FROM shop_product LEFT JOIN shop_images
 						ON shop_product.id_product = shop_images.id_product
 						WHERE NOT EXISTS(
@@ -68,7 +68,7 @@
 			if ($id_categ != 0) {
 				$conc = " AND shop_product.id_category = :id ";
 			}
-			$sql = "SELECT *
+			$sql = "SELECT *, id_product
 						FROM shop_product LEFT JOIN shop_images
 						ON shop_product.id_product = shop_images.id_product
 						WHERE NOT EXISTS(
@@ -88,7 +88,7 @@
 
 		public function GetLatestByCateg($id_categ)
 		{
-			$sql = "SELECT *
+			$sql = "SELECT *, id_product
 						FROM shop_product LEFT JOIN shop_images
 						ON shop_product.id_product = shop_images.id_product
 						WHERE NOT EXISTS(
@@ -128,14 +128,39 @@
 			}
 		}
 
-		public function Delete()
+		public function Delete($id_prod)
 		{
-			# code...
+			$this->query("DELETE FROM shop_product WHERE id_product = :id");
+			$this->bind(":id", $id_prod);
+
+			try {
+				$this->execute();
+				return true;
+			} catch (Exception $e) {
+				return false;
+			}
 		}
 
-		public function Update()
+		public function Update($id_prod)
 		{
-			# code...
+			if (!isset($_POST['prix'])) {
+				$_POST['prix'] = -1;
+			}
+
+			$this->query("UPDATE shop_product SET id_category = :id_categ, nom = :nom, prix = :prix, infos = :infos WHERE id_product = :id");
+
+			$this->bind(":id_categ", strip_tags($_POST['id_categ']));
+			$this->bind(":nom", strip_tags($_POST['nom']));
+			$this->bind(":prix", strip_tags($_POST['prix']));
+			$this->bind(":infos", strip_tags($_POST['infos']));
+			$this->bind(":id", $id_prod);
+			
+			try {
+				$this->execute();
+				return $this->LastId();
+			} catch (Exception $e) {
+				return false;
+			}
 		}
 
 	}

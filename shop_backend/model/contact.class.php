@@ -8,9 +8,10 @@
 	class model_contact extends model_database
 	{
 		
+		
 		function __construct()
 		{
-			# code...
+			parent::__construct();
 		}
 
 		/*
@@ -19,7 +20,7 @@
 
 		public function GetInfos()
 		{
-			$this->query("SELECT * shop_contact");
+			$this->query("SELECT * FROM shop_contact");
 			return $this->single();
 		}
 

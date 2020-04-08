@@ -8,7 +8,7 @@
 		
 		function __construct()
 		{
-			# code...
+			parent::__construct();
 		}
 
 		/*

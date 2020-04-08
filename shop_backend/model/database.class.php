@@ -10,7 +10,7 @@
     private $host = "localhost";
     private $user = "root";
     private $pass = "";
-    private $dbname = "voyage";
+    private $dbname = "shop";
 
     private $dbh;
     private $stmt;

@@ -5,10 +5,9 @@
 	 */
 	class model_category extends model_database
 	{
-		
 		function __construct()
 		{
-			# code...
+			parent::__construct();
 		}
 
 		/**
