@@ -1,0 +1,58 @@
+html,body{
+	height: 100vh;
+  background-size: cover;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+.bg-soft-dark {
+  background-color: rgba(0,0,0, .6);
+}
+
+#page-content {
+  flex: 1 0 auto;
+}
+
+#sticky-footer {
+  flex-shrink: none;
+}
+
+.notify-badge {
+    position: absolute;
+    left: 5px;
+    top: 5px;
+    background: red;
+	text-align: center;
+	color: white;
+    padding: 5px 10px;
+}
+
+.slick-prev:before, .slick-next:before { font-family: "slick"; font-size: 40px; line-height: 1; color: #34c6eb; opacity: 0.75; -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale; }   
+
+.slick-prev:before { content: "‹"; }
+[dir="rtl"] .slick-prev:before { content: "›"; }
+
+[dir="rtl"] .slick-next { left: -10px; top: 70px; right: auto; }
+.slick-next:before { content: "›"; }
+[dir="rtl"] .slick-next:before { content: "‹"; }
+
+.search{
+  background: url(../img/head.jpg) no-repeat center center;
+  background-size: cover;
+}
+
+.category-img{
+  background: url(../img/categ.jpg) no-repeat center center;
+  background-size: cover;
+}
+
+.contact-img{
+  background: url(../img/contact.jpg) no-repeat center center;
+  background-size: cover;
+}
+
+.slide {
+  height: 100%;
+}
