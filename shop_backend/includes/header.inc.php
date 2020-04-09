@@ -56,7 +56,7 @@
             <a class="nav-link" href="<?php echo(PUBLIC_URL.'settings') ?>">Settings</a>
           </li>
           <li class="nav-item">
-            <a href="index.html" class="btn btn-secondary">Logout</a>
+            <a href="<?php echo(PUBLIC_URL.'dc') ?>" class="btn btn-secondary">Logout</a>
           </li>
         </ul>
       </div>
@@ -70,7 +70,7 @@
 
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
           <ul class="navbar-nav ml-auto">
-            <li class="nav-item active">
+            <li class="nav-item">
               <a class="nav-link" href="<?php echo(PUBLIC_URL) ?>">Home</a>
             </li>
             <li class="nav-item dropdown ">

@@ -17,7 +17,7 @@
 
 		public function Login()
 		{
-			$this->query("SELECT * FROM users WHERE username = :username");
+			$this->query("SELECT * FROM shop_users WHERE username = :username");
 			$this->bind(":username", $_POST['username']);
 			$res = $this->single();
 			if ($res) {
@@ -45,7 +45,7 @@
 		{
 
 			//check old pass
-			$this->query("SELECT * FROM users WHERE id_user = :id");
+			$this->query("SELECT * FROM shop_users WHERE id_user = :id");
 			$this->bind(":id", $_SESSION['user']);
 
 			$res = $this->single();

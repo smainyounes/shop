@@ -17,7 +17,7 @@
 	
 		public function GetAll()
 		{
-			$sql = "SELECT *, id_product
+			$sql = "SELECT *
 						FROM shop_product LEFT JOIN shop_images
 						ON shop_product.id_product = shop_images.id_product
 						WHERE NOT EXISTS(
@@ -32,7 +32,7 @@
 
 		public function Latest()
 		{
-			$sql = "SELECT *, id_product
+			$sql = "SELECT *
 						FROM shop_product LEFT JOIN shop_images
 						ON shop_product.id_product = shop_images.id_product
 						WHERE NOT EXISTS(
@@ -47,28 +47,20 @@
 
 		public function GetSingle($id_prod)
 		{
-			$sql = "SELECT *, id_product
-						FROM shop_product LEFT JOIN shop_images
-						ON shop_product.id_product = shop_images.id_product
-						WHERE NOT EXISTS(
-						    SELECT * 
-						    FROM shop_images as T2BIS -- just an alias table
-						    WHERE T2BIS.id_product = shop_product.id_product -- usual join
-						    AND shop_images.id_image > T2BIS.id_image -- change operator to take the last instead of the first
-						) WHERE shop_product = :id";
+			$sql = "SELECT * FROM shop_product WHERE id_product = :id";
 			$this->query($sql);
 			$this->bind(":id", $id_prod);
 
 			return $this->single();
 		}
 
-		public function Search($keyword, $id_categ)
+		public function Search($id_categ, $keyword)
 		{
 			$conc = "";
 			if ($id_categ != 0) {
 				$conc = " AND shop_product.id_category = :id ";
 			}
-			$sql = "SELECT *, id_product
+			$sql = "SELECT *
 						FROM shop_product LEFT JOIN shop_images
 						ON shop_product.id_product = shop_images.id_product
 						WHERE NOT EXISTS(
@@ -76,7 +68,7 @@
 						    FROM shop_images as T2BIS -- just an alias table
 						    WHERE T2BIS.id_product = shop_product.id_product -- usual join
 						    AND shop_images.id_image > T2BIS.id_image -- change operator to take the last instead of the first
-						) WHERE shop_product.nom LIKE :keyword  $conc ORDER BY shop_product.id_product";
+						) AND shop_product.nom LIKE :keyword  $conc ORDER BY shop_product.id_product";
 			$this->query($sql);
 			$this->bind(":keyword", "%{$keyword}%");
 			if ($conc != "") {
@@ -88,7 +80,7 @@
 
 		public function GetLatestByCateg($id_categ)
 		{
-			$sql = "SELECT *, id_product
+			$sql = "SELECT *
 						FROM shop_product LEFT JOIN shop_images
 						ON shop_product.id_product = shop_images.id_product
 						WHERE NOT EXISTS(
@@ -96,11 +88,19 @@
 						    FROM shop_images as T2BIS -- just an alias table
 						    WHERE T2BIS.id_product = shop_product.id_product -- usual join
 						    AND shop_images.id_image > T2BIS.id_image -- change operator to take the last instead of the first
-						) WHERE shop_product.id_category = :id ORDER BY shop_product.id_product DESC LIMIT 9";
+						) AND shop_product.id_category = :id ORDER BY shop_product.id_product DESC LIMIT 9";
 			$this->query($sql);
 			$this->bind(":id", $id_categ);
 
 			return $this->resultSet();
+		}
+
+		public function GetIdCateg($id_prod)
+		{
+			$this->query("SELECT id_category FROM shop_product WHERE id_product = :id");
+			$this->bind(":id", $id_prod);
+
+			return $this->single();
 		}
 
 		/**
@@ -109,7 +109,7 @@
 
 		public function AddNew()
 		{
-			if (!isset($_POST['prix'])) {
+			if (empty($_POST['prix'])) {
 				$_POST['prix'] = -1;
 			}
 
@@ -124,6 +124,7 @@
 				$this->execute();
 				return $this->LastId();
 			} catch (Exception $e) {
+				echo $e;
 				return false;
 			}
 		}
