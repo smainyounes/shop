@@ -22,38 +22,6 @@
 		return false;
 	}
 
-	function UploadPic($file)
-	{
-		// image mime to be checked 
-			$imagetype = array(image_type_to_mime_type(IMAGETYPE_GIF), image_type_to_mime_type(IMAGETYPE_JPEG),
-			    image_type_to_mime_type(IMAGETYPE_PNG), image_type_to_mime_type(IMAGETYPE_BMP));
-			
-			$FOLDER = "img/";
-			$myfile = $file;
-			$keepName = false; // change this for file name.
-			    if ($myfile["name"] <> "" && $myfile["error"] == 0) {
-			        // file is ok
-			        if (in_array($myfile["type"], $imagetype)) {
-			            //Set file name
-			            if($keepName) {
-			                $file_name =  $myfile["name"];
-			            } else {
-			                // get extention and set unique name
-			                $file_extention = @strtolower(@end(@explode(".", $myfile["name"])));
-			                $file_name = date("Ymd") . '_' . rand(10000, 990000) . '.' . $file_extention;
-			            }
-			            if (move_uploaded_file($myfile["tmp_name"], $FOLDER . $file_name)) {
-			            	return $file_name;
-			            } else {
-			                return null;
-			            }
-			        } else {
-			            return null;
-			        }
-			    }
-					
-	}
-
 	function token($length = 20) {
 	    $characters = '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ&:,';
 	    $charactersLength = strlen($characters);
@@ -62,6 +30,44 @@
 	        $randomString .= $characters[rand(0, $charactersLength - 1)];
 	    }
 	    return $randomString;
+	}
+
+	function UploadPics()
+	{
+		$upname = "";
+		$realname = "";
+		$error = "";
+
+		// image mime to be checked 
+		$imagetype = array(image_type_to_mime_type(IMAGETYPE_GIF), image_type_to_mime_type(IMAGETYPE_JPEG),
+		    image_type_to_mime_type(IMAGETYPE_PNG), image_type_to_mime_type(IMAGETYPE_BMP));
+		
+		$FOLDER = "img/";
+		$myfile = $_FILES["imgprod"];
+		$keepName = false; // change this for file name.
+		for ($i = 0; $i < count($myfile["name"]); $i++) {
+		    if ($myfile["name"][$i] <> "" && $myfile["error"][$i] == 0) {
+		        // file is ok
+		        if (in_array($myfile["type"][$i], $imagetype)) {
+		            //Set file name
+		            if($keepName) {
+		                $file_name =  $myfile["name"][$i];
+		            } else {
+		                // get extention and set unique name
+		                $file_extention = @strtolower(@end(@explode(".", $myfile["name"][$i])));
+		                $file_name = date("Ymd") . '_' . rand(10000, 990000) . '.' . $file_extention;
+		            }
+		            if (!move_uploaded_file($myfile["tmp_name"][$i], $FOLDER . $file_name)) {
+		            	$error = "file not moved";
+		            }
+		        } else {
+		        	$error = "invalid file type";
+		        }
+		    }
+		    $all[] = array("filename"=> $myfile["name"][$i], "uploadedname"=> $file_name, "error"=> $error);
+		}		
+
+		return $all;
 	}
 
  ?>
