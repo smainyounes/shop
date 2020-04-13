@@ -19,14 +19,14 @@
 		{
 			?>
 
-			<div class="card h-100 mx-2">
-			  <a href="<?php echo(PUBLIC_URL.'product/detail/'.$product->id_product) ?>"><img class="card-img-top" src="<?php echo(PUBLIC_URL.'img/'.$product->link) ?>" alt=""></a>
+			<div class="card mx-2">
+			  <a href="<?php echo(PUBLIC_URL.'product/detail/'.$product->id_product) ?>"><img class="card-img-top" src="<?php echo(PUBLIC_URL.'img/'.$product->link) ?>" alt="" width="300px" height="200px"></a>
 			  <div class="card-body">
-			    <h4 class="card-title">
+			    <h5 class="card-title">
 			      <a href="<?php echo(PUBLIC_URL.'product/detail/'.$product->id_product) ?>">
-			      	<?php echo $product->nom; ?>
+			      	<?php echo shortenText($product->nom); ?>
 			      </a>
-			    </h4>
+			    </h5>
 			    
 			    <p class="card-text"><?php echo shortenText($product->infos) ?></p>
 			  </div>
@@ -38,7 +38,7 @@
 			  <?php endif; ?>
 			  <?php if($product->prix > 0): ?>
 			  <div class="card-footer">
-			    <h5 class="text-center"><?php echo "$product->prix DA"; ?></h5>
+			    <h6 class="text-center"><?php echo "$product->prix DA"; ?></h6>
 			  </div>
 			  <?php endif; ?>
 			</div>
@@ -106,7 +106,7 @@
 			<?php if($data): ?>
 			<div class="row animated fadeInUp">
 				<?php foreach($data as $product): ?>
-					<div class="col-lg-4 col-md-6 mb-4">
+					<div class="col-lg-3 col-md-4 col-6 mb-4">
 					<?php $this->ProductCard($product); ?>
 					 </div>
 				<?php endforeach; ?>
@@ -233,7 +233,7 @@
 			<?php if($data): ?>
 				<div class="row animated fadeInUp">
 					<?php foreach($data as $prod): ?>
-						<div class="col-lg-4 col-md-6 mb-4">
+						<div class="col-lg-3 col-md-4 col-6 mb-4">
 						<?php $this->ProductCard($prod, 1); ?>
 						 </div>
 					<?php endforeach; ?>

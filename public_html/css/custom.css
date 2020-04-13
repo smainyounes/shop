@@ -53,6 +53,15 @@ html {
   background-size: cover;
 }
 
-.slide {
+.card {
   height: 100%;
+}
+.card-body{
+  margin-bottom: 50px;
+}
+
+.card-footer { 
+  position: absolute;
+  bottom: 0;
+  width: 100%;
 }

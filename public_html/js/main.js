@@ -1,21 +1,21 @@
 $( document ).ready(function() {
     $(".autoplay").slick({
-      slidesToShow: 3,
-      slidesToScroll: 1,
+      slidesToShow: 5,
+      slidesToScroll:41,
       autoplay: true,
       autoplaySpeed: 2000,
       responsive: [
         {
           breakpoint: 992,
           settings: {
-            slidesToShow: 2,
+            slidesToShow: 3,
             slidesToScroll: 1
           }
         },
         {
           breakpoint: 576,
           settings: {
-            slidesToShow: 1,
+            slidesToShow: 2,
             slidesToScroll: 1
           }
         }
@@ -26,20 +26,20 @@ $( document ).ready(function() {
     
     $(".category").slick({
       infinite: false,
-      slidesToShow: 3,
+      slidesToShow: 5,
       slidesToScroll: 1,
       responsive: [
         {
           breakpoint: 992,
           settings: {
-            slidesToShow: 2,
+            slidesToShow: 3,
             slidesToScroll: 1
           }
         },
         {
           breakpoint: 576,
           settings: {
-            slidesToShow: 1,
+            slidesToShow: 2,
             slidesToScroll: 1
           }
         }

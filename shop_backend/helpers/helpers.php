@@ -1,6 +1,6 @@
 <?php 
 
-	function shortenText($text, $chars = 100)
+	function shortenText($text, $chars = 15)
 	{
 	
 		if (strlen($text) > $chars+1) // if you want...
