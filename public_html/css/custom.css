@@ -1,6 +1,7 @@
 html,body{
 	height: 100vh;
   background-size: cover;
+  margin-top: 28px;
 }
 
 html {

@@ -104,7 +104,7 @@
 
 
 			<div class="container shadow bg-light py-2" id="page-content">
-			
+
 			<?php
 		}
 
@@ -114,7 +114,7 @@
 
 			?>
 
-			<nav class="navbar navbar-expand-md navbar-dark bg-dark shadow">
+			<nav class="navbar navbar-expand-md navbar-dark bg-dark shadow fixed-top">
 			  <a class="navbar-brand" href="listprod.html">Admin</a>
 			  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
 			    <span class="navbar-toggler-icon"></span>
@@ -150,7 +150,7 @@
 			$data = $this->data;
 			?>
 
-			<nav class="navbar navbar-expand-md navbar-dark bg-dark shadow">
+			<nav class="navbar navbar-expand-md navbar-dark bg-dark shadow fixed-top">
 			  <a class="navbar-brand" href="index.html">BoxDz-Shop</a>
 			  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
 			    <span class="navbar-toggler-icon"></span>
