@@ -177,6 +177,37 @@
 			      <li class="nav-item">
 			        <a class="nav-link" href="#contact">Contact</a>
 			      </li>
+			      <li class="nav-item dropdown">
+			        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+			          <i class="fa fa-shopping-cart"></i>
+			          <span class="qty">3</span>
+			        </a>
+			        <div class="dropdown-menu dropdown-menu-right dropdown-cart" aria-labelledby="navbarDropdown">
+			          <div class="cart-products">
+			          <?php for($i=0 ; $i<6; $i++): ?>
+			         	<div class="row">
+			          	<div class="col-5">
+				          	<img class="img-fluid" src="<?php echo(PUBLIC_URL.'img/exemples/1.jpg') ?>">
+			          	</div>
+			          	<div class="col-6">
+			          		<div class="h5">Product 1</div>
+			          		<div class="h6">Quantité: 3</div>
+			          		<div class="h6">Prix: 200da</div>
+			         		<button class="btn btn-danger btn-sm delete">x</button>
+			          	</div>
+			          	</div>
+			          	<div class="dropdown-divider"></div>
+			          	<?php endfor; ?>
+			          	</div>
+
+			          <div class="text-center bg-white py-2">
+				          <div class="h5 text-center mt-2">Total : 20000da</div>
+				          <button class="btn btn-primary">Afficher les commandes</button>
+				          <button class="btn btn-primary">Commander</button>
+			          </div>
+			          
+			        </div>
+			      </li>
 			      <li class="nav-item">
 			        <a href="<?php echo(PUBLIC_URL.'login') ?>" class="btn btn-secondary">Login</a>
 			      </li>

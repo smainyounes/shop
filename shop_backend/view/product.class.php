@@ -29,13 +29,25 @@
 			    </h5>
 			    
 			    <p class="card-text"><?php echo shortenText($product->infos) ?></p>
-			  </div>
 			  <?php if(isset($user)): ?>
 			  <div class="float-right p-2">
-			   <button class="btn btn-danger" data-toggle="modal" data-target="#exampleModalCenter" data-id="<?php echo($product->id_product) ?>">Delete</button>
-			    <button class="btn btn-warning">Edit</button>
+			   <button class="btn btn-danger m-1" data-toggle="modal" data-target="#exampleModalCenter" data-id="<?php echo($product->id_product) ?>">Delete</button>
+			    <div class="btn-group m-1">
+			    	<div class="dropdown">
+			    	  <a class="btn btn-warning dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+			    	    Edit
+			    	  </a>
+
+			    	  <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+			    	    <a class="dropdown-item" href="#">Edit Infos</a>
+			    	    <a class="dropdown-item" href="#">Edit images</a>
+			    	  </div>
+			    	</div>
+			    </div>
+
 			  </div>
 			  <?php endif; ?>
+			  </div>
 			  <?php if($product->prix > 0): ?>
 			  <div class="card-footer">
 			    <h6 class="text-center"><?php echo "$product->prix DA"; ?></h6>
@@ -145,6 +157,18 @@
 				   <?php if($data->prix > 0): ?>
 				   <div class="h2"><?php echo "$data->prix DA"; ?></div>
 				   <?php endif; ?>
+
+				   <form method="POST">
+				     <div class="form-row">
+				       <div class="col">
+				         <input type="number" class="form-control" placeholder="Quantité" min="1">
+				       </div>
+				       <div class="col">
+				         <button class="btn btn-primary">Ajouté</button>
+				       </div>
+				     </div>
+				   </form>
+
 				  </div>
 				</div>
 			<?php else: ?>
