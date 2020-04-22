@@ -94,3 +94,23 @@ html {
   top: 0;
   right: -8px;
 }
+
+.mob{
+  display: none;
+}
+
+.desk{
+  display: block;
+}
+
+@media screen and (max-width: 768px) {
+  .desk{
+    display: none;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .mob{
+    display: block;
+  }
+}
