@@ -107,7 +107,7 @@
 			?>
 
 	      	
-		        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+		        <a class="nav-link dropdown-toggle text-muted pl-0" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
 		          <i class="fa fa-shopping-cart"></i>
 		          <?php if($basket->Size() > 0): ?>
 		          <span class="qty"><?php echo $basket->Size(); ?></span>
@@ -191,7 +191,8 @@
 			  	var url = '<?php echo(PUBLIC_URL."ajax/basketdelete/") ?>'+id;
 			  	$.get(url, function(data){
 			  	  if(data != 'error'){
-			  	  	$("#cart").html(data);
+			  	  	$(".mob").html(data);
+			  	  	$(".desk").html(data);
 			  	  	$("#exampleModalCenter").modal("hide");
 			  	  }else{
 			  	  	console.log('error');

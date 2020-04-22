@@ -169,6 +169,11 @@
 
 			<nav class="navbar navbar-expand-md navbar-dark bg-dark shadow fixed-top">
 			  <a class="navbar-brand" href="index.html">BoxDz-Shop</a>
+			  <div class="navbar-collapse ">
+			  	<div class="nav-item dropdown ml-auto mob" id="cart">
+			  		<?php $basket->Basket(); ?>
+			  	</div>
+			  </div>
 			  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
 			    <span class="navbar-toggler-icon"></span>
 			  </button>
@@ -194,7 +199,7 @@
 			      <li class="nav-item">
 			        <a class="nav-link" href="#contact">Contact</a>
 			      </li>
-			      <li class="nav-item dropdown" id="cart">
+			      <li class="nav-item dropdown desk" id="cart">
 			      	<?php $basket->Basket(); ?>
 			      </li>
 			      <li class="nav-item">
