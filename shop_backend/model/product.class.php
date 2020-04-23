@@ -54,6 +54,23 @@
 			return $this->single();
 		}
 
+		public function GetWithImage($id_prod)
+		{
+			$sql = "SELECT *
+						FROM shop_product LEFT JOIN shop_images
+						ON shop_product.id_product = shop_images.id_product
+						WHERE NOT EXISTS(
+						    SELECT * 
+						    FROM shop_images as T2BIS -- just an alias table
+						    WHERE T2BIS.id_product = shop_product.id_product -- usual join
+						    AND shop_images.id_image > T2BIS.id_image -- change operator to take the last instead of the first
+						) AND shop_product.id_product = :id";
+			$this->query($sql);
+			$this->bind(":id", $id_prod);
+			
+			return $this->single();
+		}
+
 		public function Search($id_categ, $keyword)
 		{
 			$conc = "";

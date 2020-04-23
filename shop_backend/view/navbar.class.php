@@ -45,10 +45,13 @@
 
 			    <!-- custom css -->
 			    <link rel="stylesheet" href="<?php echo(PUBLIC_URL) ?>css/custom.css">
+			    
+			    <!-- Wilaya / commune js -->
+			    <script src="<?php echo(PUBLIC_URL) ?>vendor/dzayer/dz2.js"></script>
 
 			    <!-- Optional JavaScript -->
 			    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
-			    <script src="<?php echo(PUBLIC_URL) ?>vendor/jquery/jquery.slim.min.js"></script>
+			    <script src="<?php echo(PUBLIC_URL) ?>vendor/jquery/jquery.min.js"></script>
 			    <script src="<?php echo(PUBLIC_URL) ?>vendor/slick/slick.min.js"></script>
 			    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"></script>
 			    <script src="<?php echo(PUBLIC_URL) ?>vendor/bootstrap/js/bootstrap.min.js"></script>
@@ -84,8 +87,8 @@
 			            <div class="form-group mx-2">
 			              <select name="categ" class="form-control form-control-lg">
 			                <option value="0" selected>Tout</option>
-			                <?php if($data): ?>
-			                  <?php foreach($data as $categ): ?>
+			                <?php if($this->data): ?>
+			                  <?php foreach($this->data as $categ): ?>
 			                <option value="<?php echo($categ->id_category) ?>"><?php echo $categ->nom_category; ?></option>
 			                  <?php endforeach; ?>
 			                <?php endif; ?>
@@ -128,6 +131,19 @@
 			      <li class="nav-item">
 			        <a class="nav-link" href="<?php echo(PUBLIC_URL.'category') ?>">Category List</a>
 			      </li>
+			      <li class="nav-item dropdown">
+			              <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+			                Commande
+			              </a>
+			              <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+			                <a class="dropdown-item" href="<?php echo(PUBLIC_URL.'commande') ?>">Tout</a>
+			                <div class="dropdown-divider"></div>
+			                <a class="dropdown-item" href="<?php echo(PUBLIC_URL.'category/encours') ?>">En Cours</a>
+			                <a class="dropdown-item" href="<?php echo(PUBLIC_URL.'category/encharge') ?>">Pris En charge</a>
+			                <a class="dropdown-item" href="<?php echo(PUBLIC_URL.'category/delivrer') ?>">Delivrer</a>
+			                <a class="dropdown-item" href="<?php echo(PUBLIC_URL.'category/annuler') ?>">Annuler</a>
+			              </div>
+			            </li>
 			      <li class="nav-item">
 			        <a class="nav-link" href="<?php echo(PUBLIC_URL.'settings') ?>">Settings</a>
 			      </li>
@@ -145,6 +161,7 @@
 
 		public function Guest()
 		{
+			$basket = new view_basket();
 			$this->Head();
 
 			$data = $this->data;
@@ -177,36 +194,8 @@
 			      <li class="nav-item">
 			        <a class="nav-link" href="#contact">Contact</a>
 			      </li>
-			      <li class="nav-item dropdown">
-			        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-			          <i class="fa fa-shopping-cart"></i>
-			          <span class="qty">3</span>
-			        </a>
-			        <div class="dropdown-menu dropdown-menu-right dropdown-cart" aria-labelledby="navbarDropdown">
-			          <div class="cart-products">
-			          <?php for($i=0 ; $i<6; $i++): ?>
-			         	<div class="row">
-			          	<div class="col-5">
-				          	<img class="img-fluid" src="<?php echo(PUBLIC_URL.'img/exemples/1.jpg') ?>">
-			          	</div>
-			          	<div class="col-6">
-			          		<div class="h5">Product 1</div>
-			          		<div class="h6">Quantité: 3</div>
-			          		<div class="h6">Prix: 200da</div>
-			         		<button class="btn btn-danger btn-sm delete">x</button>
-			          	</div>
-			          	</div>
-			          	<div class="dropdown-divider"></div>
-			          	<?php endfor; ?>
-			          	</div>
-
-			          <div class="text-center bg-white py-2">
-				          <div class="h5 text-center mt-2">Total : 20000da</div>
-				          <button class="btn btn-primary">Afficher les commandes</button>
-				          <button class="btn btn-primary">Commander</button>
-			          </div>
-			          
-			        </div>
+			      <li class="nav-item dropdown" id="cart">
+			      	<?php $basket->Basket(); ?>
 			      </li>
 			      <li class="nav-item">
 			        <a href="<?php echo(PUBLIC_URL.'login') ?>" class="btn btn-secondary">Login</a>
@@ -216,7 +205,7 @@
 			</nav>
 
 			<?php
-
+			$basket->BasketModal();
 			$this->Search();
 		}
 

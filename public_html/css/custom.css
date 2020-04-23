@@ -83,8 +83,8 @@ html {
 
 .cart-products{
   padding: 10px;
-  max-height: 400px;
-  width: 350px;
+  max-height: 25vh;
+  min-width: 315px;
   overflow-y: auto;
   overflow-x: hidden;
 }

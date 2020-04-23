@@ -24,12 +24,34 @@
 
 		public function Add()
 		{
-			$_SESSION['basket'] = array('id_prod' => $_POST['id_prod'], 'qte' => $_POST['qte']);
+			foreach ($_SESSION['basket'] as $key => $value) {
+				
+				if ($_SESSION['basket'][$key]['id_prod'] == $_POST['id_prod']) {
+					$_SESSION['basket'][$key]['qte'] += $_POST['qte'];
+					return true;
+				}
+			}
+
+			$_SESSION['basket'][] = array('id_prod' => $_POST['id_prod'], 'qte' => $_POST['qte']);
+			return true;
 		}
 
-		public function Delete()
+		public function Delete($id_prod)
 		{
-			# code...
+			foreach ($_SESSION['basket'] as $key => $value) {
+				
+				if ($_SESSION['basket'][$key]['id_prod'] == $id_prod) {
+					unset($_SESSION['basket'][$key]);
+					return true;
+				}
+			}
+
+			return false;
+		}
+
+		public function Empty()
+		{
+			unset($_SESSION['basket']);
 		}
 
 		public function Size()

@@ -159,9 +159,10 @@
 				   <?php endif; ?>
 
 				   <form method="POST">
+				   	 <input type="number" name="id_prod" value="<?php echo($id_prod); ?>" hidden>
 				     <div class="form-row">
 				       <div class="col">
-				         <input type="number" class="form-control" placeholder="Quantité" min="1">
+				         <input type="number" name="qte" class="form-control" placeholder="Quantité" min="1" required>
 				       </div>
 				       <div class="col">
 				         <button class="btn btn-primary">Ajouté</button>

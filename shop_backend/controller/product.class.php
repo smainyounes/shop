@@ -27,6 +27,14 @@
 
 		public function Detail($id_prod)
 		{
+
+			if ($_SERVER['REQUEST_METHOD'] === 'POST'){
+				if (isset($_POST['qte']) && isset($_POST['id_prod'])) {
+					$mod = new model_basket();
+					$mod->Add();
+				}
+			}
+
 			// include header
 			include BACKEND_URL."includes/header.inc.php";
 
