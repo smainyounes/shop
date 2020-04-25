@@ -86,12 +86,9 @@
 			      			case 'encours':
 			      				echo "<td class='bg-primary'>En cours</td>";
 			      				break;
-			      			
-
 			      		}
 
 			       ?>
-			      <td><?php echo $cmd->observation; ?></td>
 			      <td>
 			      	<a href="<?php echo(PUBLIC_URL.'commande/detail/'.$cmd->id_commande) ?>" class="btn btn-primary">Detail</a>
 			      </td>

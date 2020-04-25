@@ -118,7 +118,7 @@
 			?>
 
 			<nav class="navbar navbar-expand-md navbar-dark bg-dark shadow fixed-top">
-			  <a class="navbar-brand" href="listprod.html">Admin</a>
+			  <a class="navbar-brand" href="<?php echo(PUBLIC_URL.'product/list') ?>">Admin</a>
 			  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
 			    <span class="navbar-toggler-icon"></span>
 			  </button>
@@ -138,10 +138,10 @@
 			              <div class="dropdown-menu" aria-labelledby="navbarDropdown">
 			                <a class="dropdown-item" href="<?php echo(PUBLIC_URL.'commande') ?>">Tout</a>
 			                <div class="dropdown-divider"></div>
-			                <a class="dropdown-item" href="<?php echo(PUBLIC_URL.'category/encours') ?>">En Cours</a>
-			                <a class="dropdown-item" href="<?php echo(PUBLIC_URL.'category/encharge') ?>">Pris En charge</a>
-			                <a class="dropdown-item" href="<?php echo(PUBLIC_URL.'category/delivrer') ?>">Delivrer</a>
-			                <a class="dropdown-item" href="<?php echo(PUBLIC_URL.'category/annuler') ?>">Annuler</a>
+			                <a class="dropdown-item" href="<?php echo(PUBLIC_URL.'commande/list/encours') ?>">En Cours</a>
+			                <a class="dropdown-item" href="<?php echo(PUBLIC_URL.'commande/list/encharge') ?>">Pris En charge</a>
+			                <a class="dropdown-item" href="<?php echo(PUBLIC_URL.'commande/list/delivrer') ?>">Delivrer</a>
+			                <a class="dropdown-item" href="<?php echo(PUBLIC_URL.'commande/list/annuler') ?>">Annuler</a>
 			              </div>
 			            </li>
 			      <li class="nav-item">
@@ -168,7 +168,7 @@
 			?>
 
 			<nav class="navbar navbar-expand-md navbar-dark bg-dark shadow fixed-top">
-			  <a class="navbar-brand" href="index.html">BoxDz-Shop</a>
+			  <a class="navbar-brand" href="<?php echo(PUBLIC_URL) ?>">BoxDz-Shop</a>
 			  <div class="navbar-collapse ">
 			  	<div class="nav-item dropdown ml-auto mob" id="cart">
 			  		<?php $basket->Basket(); ?>
