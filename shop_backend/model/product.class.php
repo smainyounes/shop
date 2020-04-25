@@ -159,7 +159,7 @@
 			}
 		}
 
-		public function Update($id_prod)
+		public function UpdateInfos($id_prod)
 		{
 			if (!isset($_POST['prix'])) {
 				$_POST['prix'] = -1;
@@ -175,8 +175,9 @@
 			
 			try {
 				$this->execute();
-				return $this->LastId();
+				return true;
 			} catch (Exception $e) {
+				echo "$e";
 				return false;
 			}
 		}

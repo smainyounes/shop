@@ -39,7 +39,7 @@
 			    	  </a>
 
 			    	  <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
-			    	    <a class="dropdown-item" href="#">Edit Infos</a>
+			    	    <a class="dropdown-item" href="<?php echo(PUBLIC_URL.'product/editinfo/'.$product->id_product) ?>">Edit Infos</a>
 			    	    <a class="dropdown-item" href="#">Edit images</a>
 			    	  </div>
 			    	</div>
@@ -298,6 +298,48 @@
 			    $('#prod').val(id);
 			  });
 			</script>
+
+			<?php
+		}
+
+		public function EditInfos($id_product, $msg)
+		{
+			$data = $this->product->GetSingle($id_product);
+			$categs = $this->category->GetAll();
+			?>
+
+			<div class="h1 text-center animated fadeInUp font-weight-bold">Modifier Produit</div>
+			<?php if(isset($msg))
+					new view_alert($msg);
+			 ?>
+			<!-- Form -->
+			<form class="my-3 animated fadeInUp" method="POST" enctype="multipart/form-data">
+			  <div class="form-group">
+			    <label for="exampleFormControlInput1">Nom du Produit</label>
+			    <input type="text" class="form-control" id="exampleFormControlInput1" placeholder="Nom du Produit" value="<?php echo($data->nom) ?>" name="nom" required>
+			  </div>
+			  <div class="form-group">
+			    <label for="exampleFormControlSelect1">Categorie</label>
+			    <select class="form-control" id="exampleFormControlSelect1" name="id_categ" required>
+			    	<?php foreach($categs as $categ): ?>
+			      <option value="<?php echo($categ->id_category) ?>" <?php if($data->id_category == $categ->id_category) echo "selected";?>><?php echo ucwords($categ->nom_category); ?></option>
+			      	<?php endforeach; ?>
+
+			    </select>
+			  </div>
+			  <div class="form-group">
+			    <label>Prix (en DA)</label>
+			    <input type="number" class="form-control" name="prix" placeholder="1200" <?php if($data->prix > 0) echo "value='".$data->prix."'";?>>
+			  </div>
+			  <div class="form-group">
+			    <label for="exampleFormControlTextarea1">Description</label>
+			    <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" name="infos" required><?php echo $data->infos; ?></textarea>
+			  </div>
+
+			  <div class="form-group text-center">
+			    <button class="btn btn-primary">Modifier</button>
+			  </div>
+			</form>
 
 			<?php
 		}

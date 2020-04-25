@@ -134,15 +134,28 @@
 			include BACKEND_URL."includes/footer.inc.php";
 		}
 
-		public function Edit($id_prof)
+		public function Editinfo($id_prod)
 		{
 			if (!isset($_SESSION['user'])) {
-				header("Location: ".PUBLIC_URL);
+				header("Location: ".PUBLIC_URL."error");
 			}
 
+			$test = null;
+
 			if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-				
+				$mod = new model_product();
+				$test = $mod->UpdateInfos($id_prod);
 			}
+
+			// navbar
+			new view_navbar;
+
+			// edit form
+			$view = new view_product();
+			$view->EditInfos($id_prod, $test);
+
+			// include footer
+			include BACKEND_URL."includes/footer.inc.php";
 		}
 	}
 
