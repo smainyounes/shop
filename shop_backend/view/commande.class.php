@@ -161,7 +161,7 @@
 						<tbody>
 							<?php foreach($products as $prod): ?>
 							<tr>
-								<td><?php echo $prod->id_product; ?></td>
+								<td><a href="<?php echo(PUBLIC_URL.'product/detail/'.$prod->id_product) ?>"><?php echo $prod->id_product; ?></a></td>
 								<td><?php echo $prod->nom; ?></td>
 								<td><?php echo $prod->quantity; ?></td>
 								<td><?php echo $prod->prix; ?></td>

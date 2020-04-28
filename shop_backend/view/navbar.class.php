@@ -168,12 +168,12 @@
 			?>
 
 			<nav class="navbar navbar-expand-md navbar-dark bg-dark shadow fixed-top">
-			  <a class="navbar-brand" href="<?php echo(PUBLIC_URL) ?>">BoxDz-Shop</a>
-			  <div class="navbar-collapse ">
+			  <div >
 			  	<div class="nav-item dropdown ml-auto mob" id="cart">
 			  		<?php $basket->Basket(); ?>
 			  	</div>
 			  </div>
+			  <a class="navbar-brand" href="<?php echo(PUBLIC_URL) ?>">BoxDz-Shop</a>
 			  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
 			    <span class="navbar-toggler-icon"></span>
 			  </button>

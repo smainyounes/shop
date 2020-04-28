@@ -113,7 +113,7 @@
 		          <span class="qty"><?php echo $basket->Size(); ?></span>
 		          <?php endif; ?>
 		        </a>
-		        <div class="dropdown-menu dropdown-menu-right dropdown-cart" aria-labelledby="navbarDropdown">
+		        <div class="dropdown-menu dropdown-cart" aria-labelledby="navbarDropdown">
 		          <div class="cart-products">
 		          	<?php if($basket->Size() > 0): ?>
 			         	<?php foreach($data as $prod): ?>
