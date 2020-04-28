@@ -13,6 +13,12 @@
 
 		public function Index()
 		{
+			$bas = new model_basket();
+
+			if ($bas->Size() < 1) {
+				header("Location: ".PUBLIC_URL."error");
+			}
+
 			// checking posted form
 			if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 				// insert into commande
@@ -20,8 +26,7 @@
 				$id_commande = $mod->AddCommande();
 
 				if ($id_commande > 0) {
-					// insert into product_commande
-					$bas = new model_basket();
+					// insert into product_commande					
 					$test = $mod->AddProducts($id_commande, $bas->GetAll());
 				}else{
 					header("Location: ".PUBLIC_URL."checkout/error");

@@ -28,6 +28,24 @@
 			
 		}
 
+		public function Addbasket()
+		{
+			if (isset($_POST['token']) && $_POST['token'] == $_SESSION['token']) {
+				$mod = new model_basket();
+				if ($mod->Add()) {
+					$v = new view_basket();
+					$v->Basket();
+				}else{
+					echo "error";
+				}
+			}else{
+				echo "error";
+			}
+			$mod= new model_basket();
+
+			
+		}
+
 		public function Test($paramter)
 		{
 			echo "Parameter :".$paramter;

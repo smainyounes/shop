@@ -134,6 +134,8 @@
 			$data = $this->product->GetSingle($id_prod);
 			$imgs = $this->image->GetImages($id_prod);
 
+			$_SESSION['token'] = token();
+
 			?>
 			<?php if($data): ?>
 				<div class="row">
@@ -159,19 +161,65 @@
 				   <?php endif; ?>
 
 				   <form method="POST">
-				   	 <input type="number" name="id_prod" value="<?php echo($id_prod); ?>" hidden>
+				   	 <input type="text" name="token" value="<?php echo($_SESSION['token']); ?>" hidden>
 				     <div class="form-row">
 				       <div class="col">
-				         <input type="number" name="qte" class="form-control" placeholder="Quantité" min="1" required>
+				         <input type="number" id="qte" name="qte" class="form-control" placeholder="Quantité" min="1" required>
 				       </div>
 				       <div class="col">
-				         <button class="btn btn-primary">Ajouté</button>
+				         <button class="btn btn-primary" id="add_to_basket">Ajouté</button>
 				       </div>
 				     </div>
 				   </form>
 
 				  </div>
 				</div>
+
+				<!-- Modal -->
+				<div class="modal fade" id="check" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+				  <div class="modal-dialog modal-dialog-centered" role="document">
+				    <div class="modal-content">
+				      <div class="modal-header">
+				        <h5 class="modal-title" id="exampleModalCenterTitle">Produit ajouté au panier!</h5>
+				        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+				          <span aria-hidden="true">&times;</span>
+				        </button>
+				      </div>
+				      <div class="modal-body">
+				        Votre produit a été ajouté au panier
+				      </div>
+				      <div class="modal-footer">
+				        <button type="button" class="btn btn-secondary" data-dismiss="modal">Continuer vos achats</button>
+				        <a href="<?php echo(PUBLIC_URL.'checkout') ?>" class="btn btn-primary">Finaliser Commande</a>
+				      </div>
+				    </div>
+				  </div>
+				</div>
+
+
+				<script type="text/javascript">
+					$("#add_to_basket").click(function (e) {
+						e.preventDefault();
+						$.post("<?php echo(PUBLIC_URL.'ajax/addbasket') ?>",
+						{
+						  id_prod: <?php echo($id_prod); ?>,
+						  qte: $("#qte").val(),
+						  token: "<?php echo($_SESSION['token']); ?>"
+						},
+						function(data){
+							if (data != 'error') {
+								$(".mob").html(data);
+								$(".desk").html(data);
+
+								$("#check").modal("show");
+							}else{
+								console.log('error');
+							}
+						});
+
+					});
+				</script>
+
 			<?php else: ?>
 				<?php $this->Nothing(); ?>
 			<?php endif; ?>

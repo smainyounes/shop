@@ -24,6 +24,14 @@
 
 		public function Add()
 		{
+
+			$_POST['qte'] = (int) $_POST['qte'];
+			$_POST['id_prod'] = (int) $_POST['id_prod'];
+
+			if ($_POST['qte'] <= 0 || $_POST['id_prod'] <= 0) {
+				return false;
+			}
+
 			foreach ($_SESSION['basket'] as $key => $value) {
 				
 				if ($_SESSION['basket'][$key]['id_prod'] == $_POST['id_prod']) {
