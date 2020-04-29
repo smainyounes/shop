@@ -61,10 +61,16 @@
 
 		public function Done($fac)
 		{
+			$fac = (int) $fac;
+			if ($fac <= 0) {
+				header("Location: ".PUBLIC_URL."error");
+			}
+
 			// header
 			new view_navbar;
 
-			echo "<h2 class='text-center mt-5'>DONE num facture : $fac</h2>";
+			$v = new view_basket();
+			$v->Done($fac);
 			
 			// footer
 			include BACKEND_URL."includes/footer.inc.php";
@@ -75,8 +81,9 @@
 			// header
 			new view_navbar;
 
-			echo "<h2 class='text-center mt-5'>Error</h2>";
-			
+			$v = new view_basket();
+			$v->Error();
+
 			// footer
 			include BACKEND_URL."includes/footer.inc.php";
 		}

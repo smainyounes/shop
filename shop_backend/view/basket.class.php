@@ -204,6 +204,31 @@
 
 			<?php
 		}
+		
+		public function Done($fac)
+		{
+			?>
+
+			<div class='container text-center'>
+				<h2 class='mt-5'>Commande Pris en charge, voila num facture : <?php echo "$fac"; ?></h2>
+				<a href="<?php echo(PUBLIC_URL) ?>" class="text-center btn btn-link mx-auto">Retour page d acceuil</a>
+			</div>;
+
+			<?php
+		}
+
+		public function Error()
+		{
+			?>
+
+			<div class='container text-center'>
+				<h2 class='mt-5'>Erreur, Votre commande n'a pas été pris en charge</h2>
+				<a href="<?php echo(PUBLIC_URL.'checkout') ?>" class="text-center btn btn-link mx-auto">Réessayer</a>
+			</div>
+
+			<?php
+		}
+
 	}
 
  ?>
