@@ -51,6 +51,7 @@
 		  if(isset($_GET['cmd'])){
 		    $url = rtrim($_GET['cmd'], '/');
 		    $url = filter_var($url, FILTER_SANITIZE_URL);
+		    $url = htmlspecialchars($url);
 		    $url = explode('/', $url);
 		    return $url;
 		  }
