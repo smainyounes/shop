@@ -296,9 +296,13 @@
 			<?php
 		}
 
-		public function List()
+		public function List($page)
 		{
-			$data = $this->product->GetAll();
+			$data = $this->product->GetAll($page);
+
+			$total_products = $this->product->Nombre();
+
+			$total_pages = ceil($total_products / 20);
 			?>
 
 			<div class="h1 text-center animated fadeInUp font-weight-bold">Product List</div>
@@ -311,6 +315,20 @@
 						 </div>
 					<?php endforeach; ?>
 				</div>
+				<?php if($total_pages > 1): ?>
+				<nav aria-label="Page navigation example">
+				  <ul class="pagination flex-wrap justify-content-center">
+				  	<?php for($i = 1; $i <= $total_pages; $i++): ?>
+				  		<?php if($i == $page): ?>
+				  			<li class="page-item active"><a class="page-link" href="#"><?php echo $i; ?></a></li>
+				  		<?php else: ?>
+				  			<li class="page-item"><a class="page-link" href="<?php echo(PUBLIC_URL.'product/list/'.$i) ?>"><?php echo $i; ?></a></li>
+				  		<?php endif; ?>
+				    
+					<?php endfor; ?>
+				  </ul>
+				</nav>
+				<?php endif; ?>
 			<?php else: ?>
 				<?php $this->Nothing(); ?>
 			<?php endif; ?>

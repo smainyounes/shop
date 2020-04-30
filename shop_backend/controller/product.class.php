@@ -53,7 +53,7 @@
 			include BACKEND_URL."includes/footer.inc.php";
 		}
 
-		public function List($categ= null, $keyword = null)
+		public function List($page = 1)
 		{
 
 			if (!isset($_SESSION['user'])) {
@@ -83,7 +83,7 @@
 			include BACKEND_URL."includes/header.inc.php";
 
 			// list
-			$this->product->List();
+			$this->product->List($page);
 
 			// include footer
 			include BACKEND_URL."includes/footer.inc.php";

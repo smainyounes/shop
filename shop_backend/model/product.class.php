@@ -15,8 +15,11 @@
 		* getters
 		*/
 	
-		public function GetAll()
+		public function GetAll($page)
 		{
+			$limit = 20;
+			$start = ($page - 1) * $limit;
+
 			$sql = "SELECT *
 						FROM shop_product LEFT JOIN shop_images
 						ON shop_product.id_product = shop_images.id_product
@@ -25,7 +28,7 @@
 						    FROM shop_images as T2BIS -- just an alias table
 						    WHERE T2BIS.id_product = shop_product.id_product -- usual join
 						    AND shop_images.id_image > T2BIS.id_image -- change operator to take the last instead of the first
-						) ORDER BY shop_product.id_product DESC";
+						) ORDER BY shop_product.id_product DESC LIMIT $limit OFFSET $start";
 			$this->query($sql);
 			return $this->resultSet();
 		}
@@ -118,6 +121,13 @@
 			$this->bind(":id", $id_prod);
 
 			return $this->single();
+		}
+
+		public function Nombre()
+		{
+			$this->query("SELECT COUNT(id_product) nbr FROM shop_product");
+			$res = $this->single();
+			return $res->nbr;
 		}
 
 		/**
