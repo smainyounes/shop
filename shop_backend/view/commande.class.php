@@ -98,12 +98,12 @@
 			</table>
 			<?php if($total_pages > 1): ?>
 			<nav aria-label="Page navigation example">
-			  <ul class="pagination justify-content-center">
-			  	<?php for($i = 1; $i < $total_pages; $i++): ?>
+			  <ul class="pagination flex-wrap justify-content-center">
+			  	<?php for($i = 1; $i <= $total_pages; $i++): ?>
 			  		<?php if($i == $page): ?>
 			  			<li class="page-item active"><a class="page-link" href="#"><?php echo $i; ?></a></li>
 			  		<?php else: ?>
-			  			<li class="page-item"><a class="page-link" href="<?php echo(PUBLIC_URL.'commande/'.$filter.'/'.$i) ?>"><?php echo $i; ?></a></li>
+			  			<li class="page-item"><a class="page-link" href="<?php echo(PUBLIC_URL.'commande/list/'.$filter.'/'.$i) ?>"><?php echo $i; ?></a></li>
 			  		<?php endif; ?>
 			    
 				<?php endfor; ?>
