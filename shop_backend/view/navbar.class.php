@@ -6,16 +6,45 @@
 	class view_navbar
 	{
 		private $data;
-
+		private $text;
 		function __construct()
 		{
 			$model = new model_category();
 			$this->data = $model->GetAll();
 
+			$this->text = $this->Text();
+
 			if(isset($_SESSION['user'])) {
 				$this->Admin();
 			}else{
 				$this->Guest();
+			}
+
+		}
+
+		private function Text()
+		{
+			switch ($_SESSION['lang']) {
+				case 'fr':
+					return array('home' => "Accueil",
+					 "categories" => "Catégories",
+					 "contact" => "Contact",
+					 "login" => "Identifier",
+					 "all" => "Tout",
+					 "lang" => "Langue",
+					 "search" => "Chercher");
+					break;
+				
+				case 'ar':
+					return array('home' => "الصفحة الرئيسية",
+					 "categories" => "اصناف",
+					 "contact" => "اتصل",
+					 "login" => "دخول",
+					 "all" => "الكل",
+					 "lang" => "لغة",
+					 "search" => "بحث");
+					break;
+
 			}
 		}
 
@@ -24,11 +53,14 @@
 			?>
 
 			<!doctype html>
-			<html lang="en">
+			<html lang="<?php echo($_SESSION['lang']) ?>">
 			  <head>
 			    <!-- Required meta tags -->
 			    <meta charset="utf-8">
 			    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+			    <!-- logo icon -->
+			    <link rel="icon" type="image/png" href="<?php echo(PUBLIC_URL.'img/boxdzlogo.png') ?>" />
 
 			    <!-- Bootstrap CSS -->
 			    <link rel="stylesheet" href="<?php echo(PUBLIC_URL) ?>vendor/bootstrap/css/bootstrap.min.css">
@@ -39,6 +71,9 @@
 
 			    <!-- font awesome -->
 			    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css">
+
+			    <!-- flag icon -->
+			    <link href="https://cdnjs.cloudflare.com/ajax/libs/flag-icon-css/3.1.0/css/flag-icon.min.css" rel="stylesheet">
 
 			    <!-- animate css -->
 			    <link rel="stylesheet" type="text/css" href="<?php echo(PUBLIC_URL) ?>vendor/animatecss/animate.css">
@@ -86,7 +121,7 @@
 			            </div>
 			            <div class="form-group mx-2">
 			              <select name="categ" class="form-control form-control-lg">
-			                <option value="0" selected>Tout</option>
+			                <option value="0" selected><?php echo $this->text['all']; ?></option>
 			                <?php if($this->data): ?>
 			                  <?php foreach($this->data as $categ): ?>
 			                <option value="<?php echo($categ->id_category) ?>"><?php echo $categ->nom_category; ?></option>
@@ -95,7 +130,7 @@
 			              </select>
 			            </div>
 			            <div class="form-group">
-			              <button class="btn btn-primary btn-lg">Search</button>
+			              <button class="btn btn-primary btn-lg"><?php echo $this->text['search']; ?></button>
 			            </div>
 			          </form>
 			        </div>
@@ -181,14 +216,14 @@
 			  <div class="collapse navbar-collapse" id="navbarSupportedContent">
 			    <ul class="navbar-nav ml-auto">
 			      <li class="nav-item">
-			        <a class="nav-link" href="<?php echo(PUBLIC_URL) ?>">Home</a>
+			        <a class="nav-link" href="<?php echo(PUBLIC_URL) ?>"><?php echo $this->text['home']; ?></a>
 			      </li>
 			      <li class="nav-item dropdown ">
 			              <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-			                Categories
+			                <?php echo $this->text['categories']; ?>
 			              </a>
 			              <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-			                <a class="dropdown-item" href="<?php echo(PUBLIC_URL.'product/search/0'); ?>">Tout</a>
+			                <a class="dropdown-item" href="<?php echo(PUBLIC_URL.'product/search/0'); ?>"><?php echo $this->text['all']; ?></a>
 			                <?php if($data): ?>
 			                  <?php foreach($data as $categ): ?>
 			                <a class="dropdown-item" href="<?php echo(PUBLIC_URL.'product/search/'.$categ->id_category); ?>"><?php echo $categ->nom_category; ?></a>
@@ -197,13 +232,21 @@
 			              </div>
 			      </li>
 			      <li class="nav-item">
-			        <a class="nav-link" href="#contact">Contact</a>
+			        <a class="nav-link" href="#contact"><?php echo $this->text['contact']; ?></a>
+			      </li>
+			      <li class="nav-item dropdown">
+			        <a class="nav-link dropdown-toggle" href="" id="dropdown09" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> <?php echo $this->text['lang']; ?></a>
+			        <div class="dropdown-menu text-center dropdown-menu-right" aria-labelledby="dropdown09">
+			            <a class="dropdown-item" href="?lang=ar"><span class="flag-icon flag-icon-dz"> </span>  عربية</a>
+			            <a class="dropdown-item" href="?lang=fr"><span class="flag-icon flag-icon-fr"> </span> Français</a>
+			            
+			        </div>
 			      </li>
 			      <li class="nav-item dropdown desk" id="cart">
 			      	<?php $basket->Basket(); ?>
 			      </li>
 			      <li class="nav-item">
-			        <a href="<?php echo(PUBLIC_URL.'login') ?>" class="btn btn-secondary">Login</a>
+			        <a href="<?php echo(PUBLIC_URL.'login') ?>" class="btn btn-secondary"><?php echo $this->text['login']; ?></a>
 			      </li>
 			    </ul>
 			  </div>

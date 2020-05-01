@@ -8,11 +8,49 @@
 		private $product;
 		private $category;
 		private $image;
+
+		private $text;
 		function __construct()
 		{
 			$this->product = new model_product();
 			$this->category = new model_category();
 			$this->image = new model_image();
+
+			$this->text = $this->Text();
+		}
+
+		private function Text()
+		{
+			switch ($_SESSION['lang']) {
+				case 'fr':
+					return array('latest' => "Nouveau",
+					 "bycateg" => "Nos Produit par Categorie",
+					 "search" => "Chercher",
+					 "quantity" => "Quantité",
+					 "add" => "Ajouté",
+					 "notice" => "Remarque",
+					 "added" => "Votre produit a été ajouté au panier",
+					 "final" => "Finaliser Commande",
+					 "continue" => "Continuer vos achats",
+					 "suggest" => "Suggestion",
+					 "nothing" => "Produit non trouvé");
+					break;
+				
+				case 'ar':
+					return array('latest' => "جديد",
+					 "bycateg" => "منتجاتنا بالأصناف",
+					 "search" => "بحث",
+					 "quantity" => "كمية",
+					 "add" => "أضف",
+					 "notice" => "تنويه",
+					 "added" => "تم إضافة المنتج الخاص بك إلى سلة التسوق",
+					 "final" => "إنهاء الطلب",
+					 "continue" => "استمر في التسوق",
+					 "suggest" => "اقتراح",
+					 "nothing" => "منتوج غير متوفر ");
+					break;
+
+			}
 		}
 
 		private function ProductCard($product, $user = null)
@@ -63,7 +101,7 @@
 			$data = $this->product->Latest();
 			?>
 			<?php if($data): ?>
-			<div class="h2 my-3 ml-2 animated fadeInUp">Latest</div>
+			<div class="h2 my-3 ml-2 animated fadeInUp"><?php echo $this->text['latest']; ?></div>
 			<div class="container animated fadeInUp">
 			  <div class="autoplay">
 			  	<?php foreach($data as $product){
@@ -83,7 +121,7 @@
 			<?php if($categ): ?>
 			<div class="m-4 category-img animated fadeInLeft">
 			  <div class="container py-5 bg-soft-dark">
-			    <div class="h1 text-center text-light">Nos Produit par Categorie</div>
+			    <div class="h1 text-center text-light"><?php echo $this->text['bycateg']; ?></div>
 			  </div>
 			</div>
 
@@ -114,7 +152,7 @@
 		{
 			$data = $this->product->Search($categ, $keyword);
 			?>
-			<div class="h1 text-center animated fadeInUp font-weight-bold">Search</div>
+			<div class="h1 text-center animated fadeInUp font-weight-bold"><?php echo $this->text['search']; ?></div>
 			<?php if($data): ?>
 			<div class="row animated fadeInUp">
 				<?php foreach($data as $product): ?>
@@ -164,10 +202,10 @@
 				   	 <input type="text" name="token" value="<?php echo($_SESSION['token']); ?>" hidden>
 				     <div class="form-row">
 				       <div class="col">
-				         <input type="number" id="qte" name="qte" class="form-control" placeholder="Quantité" min="1" required>
+				         <input type="number" id="qte" name="qte" class="form-control" placeholder="<?php echo($this->text['quantity']) ?>" min="1" required>
 				       </div>
 				       <div class="col">
-				         <button class="btn btn-primary" id="add_to_basket">Ajouté</button>
+				         <button class="btn btn-primary" id="add_to_basket"><?php echo $this->text['add']; ?></button>
 				       </div>
 				     </div>
 				   </form>
@@ -180,17 +218,17 @@
 				  <div class="modal-dialog modal-dialog-centered" role="document">
 				    <div class="modal-content">
 				      <div class="modal-header">
-				        <h5 class="modal-title" id="exampleModalCenterTitle">Produit ajouté au panier!</h5>
+				        <h5 class="modal-title" id="exampleModalCenterTitle"><?php echo $this->text['notice']; ?></h5>
 				        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
 				          <span aria-hidden="true">&times;</span>
 				        </button>
 				      </div>
 				      <div class="modal-body">
-				        Votre produit a été ajouté au panier
+				        <?php echo $this->text['added']; ?>
 				      </div>
 				      <div class="modal-footer">
-				        <button type="button" class="btn btn-secondary" data-dismiss="modal">Continuer vos achats</button>
-				        <a href="<?php echo(PUBLIC_URL.'checkout') ?>" class="btn btn-primary">Finaliser Commande</a>
+				        <button type="button" class="btn btn-secondary" data-dismiss="modal"><?php echo $this->text['continue']; ?></button>
+				        <a href="<?php echo(PUBLIC_URL.'checkout') ?>" class="btn btn-primary"><?php echo $this->text['final']; ?></a>
 				      </div>
 				    </div>
 				  </div>
@@ -233,7 +271,7 @@
 			$data = $this->product->GetLatestByCateg($id_categ);
 			?>
 			<?php if($data): ?>
-			<div class="h2 my-3 ml-2 animated fadeInUp">Suggestion</div>
+			<div class="h2 my-3 ml-2 animated fadeInUp"><?php echo $this->text['suggest']; ?></div>
 			<div class="container animated fadeInUp">
 			  <div class="autoplay">
 			  	<?php 
@@ -414,7 +452,7 @@
 		{
 			?>
 
-			<div class="h1 font-weight-bold text-center mt-5 mx-auto">No products Found</div>
+			<div class="h1 font-weight-bold text-center mt-5 mx-auto"><?php echo $this->text['nothing']; ?></div>
 
 			<?php
 		}

@@ -5,10 +5,62 @@
 	 */
 	class view_basket
 	{
-		
+		private $text;
+
 		function __construct()
 		{
-			# code...
+			$this->text = $this->Text();
+		}
+
+		private function Text()
+		{
+			switch ($_SESSION['lang']) {
+				case 'fr':
+					return array("final" => "Finaliser Commande",
+					 "infos" => "Vos informtaions",
+					 "name" => "Nom et Prenom",
+					 "phone" => "Telephone",
+					 "address" => "Adresse",
+					 "obs" => "Observation",
+					 "basket" => "Panier",
+					 "product" => "Produit",
+					 "total" => "Total",
+					 "confirm" => "Confirmer",
+					 "empty" => "Panier Vide",
+					 "final" => "Finaliser Commande",
+					 "yes" => "Oui",
+					 "no" => "Non",
+					 "da" => "DA",
+					 "rehome" => "Retour page d'acceuil",
+					 "remove" => "Enlever du panier?",
+					 "retry" => "Réessayer",
+					 "done" => "Commande Pris en charge, voila num facture :",
+					 "error" => "Erreur, Votre commande n'a pas été pris en charge");
+					break;
+				case 'ar':
+					return array("final" => "إنهاء الطلب",
+					 "infos" => "معلوماتكم الشخصية",
+					 "name" => "الإسم واللقب",
+					 "phone" => "هاتف",
+					 "address" => "عنوان",
+					 "obs" => "ملاحظة",
+					 "basket" => "سلة",
+					 "product" => "المنتج",
+					 "total" => "مجموع",
+					 "confirm" => "تأكيد",
+					 "empty" => "سلة فارغة",
+					 "final" => "إنهاء الطلب",
+					 "yes" => "نعم",
+					 "no" => "لا",
+					 "da" => "دج",
+					 "rehome" => "العودة الى القائمة الرئيسية",
+					 "remove" => "إزالة من السلة؟",
+					 "retry" => "أعد المحاولة",
+					 "done" => "رائع الآن طلبك تحت الخدمة رقم الفاتورة",
+					 "error" => "خطىء طلبك غير مدعوم في هذه اللحظة");
+					break;
+
+			}
 		}
 
 		public function Checkout()
@@ -19,17 +71,17 @@
 			$product = new model_product();
 
 			?>
-			<div class="h2 text-center">Finaliser commande</div>
+			<div class="h2 text-center"><?php echo $this->text['final']; ?></div>
 			<form class="mt-5" method="POST">
 				<div class="row">
 					<!-- informations form -->
 					<div class="col-md-7">
-						<div class="h3 text-center mb-3">Vos informtaion</div>
+						<div class="h3 text-center mb-3"><?php echo $this->text['infos']; ?></div>
 						<div class="form-group">
-							<input class="form-control" type="text" name="nom" placeholder="Nom & Prenom" required>
+							<input class="form-control" type="text" name="nom" placeholder="<?php echo($this->text['name']) ?>" required>
 						</div>
 						<div class="form-group">
-							<input class="form-control" type="text" name="phone" placeholder="Telephone" required>
+							<input class="form-control" type="text" name="phone" placeholder="<?php echo($this->text['phone']) ?>" required>
 						</div>
 						<div class="row">
 							<div class="col form-group">
@@ -43,20 +95,20 @@
 							</div>
 						</div>
 						<div class="form-group">
-							<textarea class="form-control" rows="2" placeholder="Address" name="address" style="resize: none;" required></textarea>
+							<textarea class="form-control" rows="2" placeholder="<?php echo($this->text['address']) ?>" name="address" style="resize: none;" required></textarea>
 						</div>
 						<div class="form-group">
-							<textarea class="form-control" rows="3" placeholder="Observation" name="obs" style="resize: none;"></textarea>
+							<textarea class="form-control" rows="3" placeholder="<?php echo($this->text['obs']) ?>" name="obs" style="resize: none;"></textarea>
 						</div>
 					</div>
 					<!-- panier -->
 					<div class="col-md-4 border">
-						<div class="h3 text-center mb-3">Panier</div>
+						<div class="h3 text-center mb-3"><?php echo $this->text['basket']; ?></div>
 						<table class="table table-borderless">
 							<thead>
 								<tr>
-									<th>Produit</th>
-									<th class="text-right">Total</th>
+									<th><?php echo $this->text['product']; ?></th>
+									<th class="text-right"><?php echo $this->text['total']; ?></th>
 								</tr>
 							</thead>
 							<tbody>
@@ -73,13 +125,13 @@
 								<?php endforeach; ?>
 								
 								<tr>
-									<td class="h3">Total</td>
+									<td class="h3"><?php echo $this->text['total']; ?></td>
 									<td class="text-right h3 text-primary"><?php echo $total." DA"; ?></td>
 								</tr>
 							</tbody>
 						</table>
 						<div class="form-group">
-							<button class="btn btn-primary btn-block">Confirmer</button>
+							<button class="btn btn-primary btn-block"><?php echo $this->text['confirm']; ?></button>
 						</div>
 					</div>
 				</div>
@@ -137,11 +189,11 @@
 			          <?php endforeach; ?>
 			          </div>
 			          <div class="text-center bg-white py-2">
-				          <div class="h5 text-center mt-2">Total : <?php echo $total." DA"; ?></div>
-				          <a href="<?php echo(PUBLIC_URL.'checkout') ?>" class="btn btn-primary">Finaliser commande</a>
+				          <div class="h5 text-center mt-2"><?php echo $this->text['total'].": ".$total." ".$this->text['da']; ?></div>
+				          <a href="<?php echo(PUBLIC_URL.'checkout') ?>" class="btn btn-primary"><?php echo $this->text['final']; ?></a>
 			          </div>
 		          	<?php else: ?>
-		          		<h4 class="text-center">Panier vide</h4>
+		          		<h4 class="text-center"><?php echo $this->text['empty']; ?></h4>
 		          	</div>		          
 		          	<?php endif; ?>
 		          
@@ -159,19 +211,19 @@
 			  <div class="modal-dialog modal-dialog-centered" role="document">
 			    <div class="modal-content">
 			      <div class="modal-header">
-			        <h5 class="modal-title" id="exampleModalCenterTitle">Confirmation</h5>
+			        <h5 class="modal-title" id="exampleModalCenterTitle"><?php echo $this->text['confirm']; ?></h5>
 			        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
 			          <span aria-hidden="true">&times;</span>
 			        </button>
 			      </div>
 			      <div class="modal-body">
-			        Enlever du panier?
+			        <?php echo $this->text['remove']; ?>
 			      </div>
 			      <div class="modal-footer">
-			        <button type="button" class="btn btn-secondary" data-dismiss="modal">Non</button>
+			        <button type="button" class="btn btn-secondary" data-dismiss="modal"><?php echo $this->text['no']; ?></button>
 			        <div>
 			          <input type="number" name="id_prod" id="prod" hidden>
-			          <button class="btn btn-primary" id="delete_panier">Oui</button>
+			          <button class="btn btn-primary" id="delete_panier"><?php echo $this->text['yes']; ?></button>
 			        </div>
 			      </div>
 			    </div>
@@ -210,8 +262,8 @@
 			?>
 
 			<div class='container text-center'>
-				<h2 class='mt-5'>Commande Pris en charge, voila num facture : <?php echo "$fac"; ?></h2>
-				<a href="<?php echo(PUBLIC_URL) ?>" class="text-center btn btn-link mx-auto">Retour page d acceuil</a>
+				<h2 class='mt-5'><?php echo $this->text['done']." $fac"; ?></h2>
+				<a href="<?php echo(PUBLIC_URL) ?>" class="text-center btn btn-link mx-auto"><?php echo $this->text['rehome']; ?></a>
 			</div>;
 
 			<?php
@@ -222,8 +274,8 @@
 			?>
 
 			<div class='container text-center'>
-				<h2 class='mt-5'>Erreur, Votre commande n'a pas été pris en charge</h2>
-				<a href="<?php echo(PUBLIC_URL.'checkout') ?>" class="text-center btn btn-link mx-auto">Réessayer</a>
+				<h2 class='mt-5'><?php echo $this->text['error']; ?></h2>
+				<a href="<?php echo(PUBLIC_URL.'checkout') ?>" class="text-center btn btn-link mx-auto"><?php echo $this->text['retry']; ?></a>
 			</div>
 
 			<?php
