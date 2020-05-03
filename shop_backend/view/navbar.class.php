@@ -166,6 +166,9 @@
 			      <li class="nav-item">
 			        <a class="nav-link" href="<?php echo(PUBLIC_URL.'category') ?>">Category List</a>
 			      </li>
+			      <li class="nav-item">
+			        <a class="nav-link" href="<?php echo(PUBLIC_URL.'emailsub') ?>">Email List</a>
+			      </li>
 			      <li class="nav-item dropdown">
 			              <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
 			                Commande

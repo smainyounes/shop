@@ -54,6 +54,11 @@ html {
   background-size: cover;
 }
 
+.letter{
+  background: url(../img/letter.jpg) no-repeat center center;
+  background-size: cover;
+}
+
 .card {
   height: 100%;
 }
