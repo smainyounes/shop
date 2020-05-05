@@ -46,6 +46,12 @@
 			
 		}
 
+		public function Comment($id_product, $page)
+		{
+			$view = new view_comment();
+			$view->Comments($id_product, $page);
+		}
+
 		public function Test($paramter)
 		{
 			echo "Parameter :".$paramter;

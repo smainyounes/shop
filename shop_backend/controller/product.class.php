@@ -29,17 +29,27 @@
 		{
 
 			if ($_SERVER['REQUEST_METHOD'] === 'POST'){
-				if (isset($_POST['qte']) && isset($_POST['id_prod'])) {
-					$mod = new model_basket();
-					$mod->Add();
+				if (isset($_POST['username']) && isset($_POST['comment']) && isset($_POST['token'])) {
+					if (isset($_SESSION['token']) && !strcmp($_SESSION['token'], $_POST['token'])) {
+						$mod = new model_comment();
+						$mod->Add($id_prod);
+					}
+					
 				}
 			}
+
+			// init token
+			$_SESSION['token'] = token();
 
 			// include header
 			include BACKEND_URL."includes/header.inc.php";
 
 			// Detail
 			$this->product->Detail($id_prod);
+
+			// Comments
+			$view = new view_comment();
+			$view->wrap($id_prod);
 
 			// suggestion
 			$mod = new model_product();
@@ -129,6 +139,30 @@
 			include BACKEND_URL."includes/header.inc.php";
 
 			$this->product->AddForm($test);
+
+			// include footer
+			include BACKEND_URL."includes/footer.inc.php";
+		}
+
+		public function Comments($id_prod, $page = 1)
+		{
+			// checking if admin
+			if (!isset($_SESSION['user'])) {
+				header("Location: ".PUBLIC_URL."error");
+			}
+
+			if ($_SERVER['REQUEST_METHOD'] === 'POST'){
+				if (isset($_POST['comment'])) {
+					$mod = new model_comment();
+					$mod->Delete($_POST['comment']);
+				}
+			}
+
+			// navbar
+			new view_navbar;
+
+			$view = new view_comment();
+			$view->CommentList($id_prod, $page);
 
 			// include footer
 			include BACKEND_URL."includes/footer.inc.php";

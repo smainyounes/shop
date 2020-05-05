@@ -78,6 +78,7 @@
 
 			    	  <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
 			    	    <a class="dropdown-item" href="<?php echo(PUBLIC_URL.'product/editinfo/'.$product->id_product) ?>">Edit Infos</a>
+			    	    <a class="dropdown-item" href="<?php echo(PUBLIC_URL.'product/comments/'.$product->id_product) ?>">Edit Comments</a>
 			    	    <a class="dropdown-item" href="#">Edit images</a>
 			    	  </div>
 			    	</div>
