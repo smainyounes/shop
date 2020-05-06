@@ -137,7 +137,7 @@
 			  		$this->ProductCard($product);
 			  	} ?>
 			    <div class="mx-2 bg-white d-flex align-items-center justify-content-center">
-			      <a href="<?php echo(PUBLIC_URL.'product/search/'.$cat->id_category) ?>" class="">
+			      <a href="<?php echo(PUBLIC_URL.'product/search/1/'.$cat->id_category) ?>" class="">
 			        <i class="fas fa-3x fa-plus"></i>
 			      </a>
 			    </div>
@@ -149,9 +149,13 @@
 			<?php
 		}
 
-		public function Search($categ, $keyword)
+		public function Search($page, $categ, $keyword)
 		{
-			$data = $this->product->Search($categ, $keyword);
+			$data = $this->product->Search($page, $categ, $keyword);
+
+			$total_products = $this->product->NombreRecherche($categ, $keyword);
+
+			$total_pages = ceil($total_products / 20);
 			?>
 			<div class="h1 text-center animated fadeInUp font-weight-bold"><?php echo $this->text['search']; ?></div>
 			<?php if($data): ?>
@@ -162,6 +166,22 @@
 					 </div>
 				<?php endforeach; ?>
 			</div>
+
+			<?php if($total_pages > 1): ?>
+			<nav aria-label="Page navigation example">
+			  <ul class="pagination flex-wrap justify-content-center">
+			  	<?php for($i = 1; $i <= $total_pages; $i++): ?>
+			  		<?php if($i == $page): ?>
+			  			<li class="page-item active"><a class="page-link" href="#"><?php echo $i; ?></a></li>
+			  		<?php else: ?>
+			  			<li class="page-item"><a class="page-link" href="<?php echo(PUBLIC_URL.'product/search/'.$i.'/'.$categ.'/'.$keyword) ?>"><?php echo $i; ?></a></li>
+			  		<?php endif; ?>
+			    
+				<?php endfor; ?>
+			  </ul>
+			</nav>
+			<?php endif; ?>
+
 			<?php else: ?>
 				<?php $this->Nothing(); ?>
 			<?php endif; ?>

@@ -13,13 +13,13 @@
 			$this->product = new view_product();
 		}
 
-		public function Search($catego = 0, $keyword = null)
+		public function Search($page = 1, $catego = 0, $keyword = null)
 		{
 			// include header
 			include BACKEND_URL."includes/header.inc.php";
 
 			// Search
-			$this->product->Search($catego, $keyword);
+			$this->product->Search($page, $catego, $keyword);
 
 			// include footer
 			include BACKEND_URL."includes/footer.inc.php";

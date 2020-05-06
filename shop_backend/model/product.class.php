@@ -74,8 +74,11 @@
 			return $this->single();
 		}
 
-		public function Search($id_categ, $keyword)
+		public function Search($page, $id_categ, $keyword)
 		{
+			$limit = 20;
+			$start = ($page - 1) * $limit;
+
 			$conc = "";
 			if ($id_categ != 0) {
 				$conc = " AND shop_product.id_category = :id ";
@@ -88,7 +91,7 @@
 						    FROM shop_images as T2BIS -- just an alias table
 						    WHERE T2BIS.id_product = shop_product.id_product -- usual join
 						    AND shop_images.id_image > T2BIS.id_image -- change operator to take the last instead of the first
-						) AND shop_product.nom LIKE :keyword  $conc ORDER BY shop_product.id_product";
+						) AND shop_product.nom LIKE :keyword  $conc ORDER BY shop_product.id_product LIMIT $limit OFFSET $start";
 			$this->query($sql);
 			$this->bind(":keyword", "%{$keyword}%");
 			if ($conc != "") {
@@ -126,6 +129,25 @@
 		public function Nombre()
 		{
 			$this->query("SELECT COUNT(id_product) nbr FROM shop_product");
+			$res = $this->single();
+			return $res->nbr;
+		}
+
+		public function NombreRecherche($id_categ, $keyword)
+		{
+			$conc = "";
+			if ($id_categ != 0) {
+				$conc = " AND id_category = :id ";
+			}
+
+			$sql = "SELECT COUNT(id_product) nbr FROM shop_product WHERE nom LIKE :keyword $conc";
+
+			$this->query($sql);
+			$this->bind(":keyword", "%{$keyword}%");
+			if ($conc != "") {
+				$this->bind(":id", $id_categ);
+			}
+			
 			$res = $this->single();
 			return $res->nbr;
 		}
