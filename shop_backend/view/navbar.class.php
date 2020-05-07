@@ -226,10 +226,10 @@
 			                <?php echo $this->text['categories']; ?>
 			              </a>
 			              <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-			                <a class="dropdown-item" href="<?php echo(PUBLIC_URL.'product/search/0'); ?>"><?php echo $this->text['all']; ?></a>
+			                <a class="dropdown-item" href="<?php echo(PUBLIC_URL.'product/search/1/0'); ?>"><?php echo $this->text['all']; ?></a>
 			                <?php if($data): ?>
 			                  <?php foreach($data as $categ): ?>
-			                <a class="dropdown-item" href="<?php echo(PUBLIC_URL.'product/search/'.$categ->id_category); ?>"><?php echo $categ->nom_category; ?></a>
+			                <a class="dropdown-item" href="<?php echo(PUBLIC_URL.'product/search/1/'.$categ->id_category); ?>"><?php echo $categ->nom_category; ?></a>
 			                  <?php endforeach; ?>
 			                <?php endif; ?>
 			              </div>
