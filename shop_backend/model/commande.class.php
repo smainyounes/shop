@@ -20,7 +20,7 @@
 			$limit = 10;
 			$start = ($page - 1) * $limit;
 
-			$this->query("SELECT * FROM shop_commandes LIMIT $limit OFFSET $start");
+			$this->query("SELECT * FROM shop_commandes ORDER BY id_commande DESC LIMIT $limit OFFSET $start");
 
 			return $this->resultSet();
 		}
