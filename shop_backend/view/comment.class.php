@@ -141,7 +141,7 @@
 			      	</div>
 			      	<div class="modal-footer">
 			      	  <button type="button" class="btn btn-secondary" data-dismiss="modal"><?php echo $this->text['cancel']; ?></button>
-			      	  <button class="btn btn-primary"><?php echo $this->text['save']; ?></button>
+			      	  <button class="btn btn-purp"><?php echo $this->text['save']; ?></button>
 			      	</div>
 			      </form>
 

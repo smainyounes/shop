@@ -57,16 +57,16 @@
 		{
 			?>
 
-			<div class="card mx-2">
-			  <a href="<?php echo(PUBLIC_URL.'product/detail/'.$product->id_product) ?>"><img class="card-img-top" src="<?php echo(PUBLIC_URL.'img/'.$product->link) ?>" alt="" width="300px" height="200px"></a>
+			<div class="card mx-2" style="max-width: 18rem;">
+			  <a href="<?php echo(PUBLIC_URL.'product/detail/'.$product->id_product) ?>"><img class="card-img-top" src="<?php echo(PUBLIC_URL.'img/'.$product->link) ?>" alt="" width="200px" height="150px"></a>
 			  <div class="card-body">
-			    <h5 class="card-title">
-			      <a href="<?php echo(PUBLIC_URL.'product/detail/'.$product->id_product) ?>">
+			    <h6 class="card-title">
+			      <a class="black-link" href="<?php echo(PUBLIC_URL.'product/detail/'.$product->id_product) ?>">
 			      	<?php echo shortenText($product->nom); ?>
 			      </a>
-			    </h5>
+			    </h6>
 			    
-			    <p class="card-text"><?php echo shortenText($product->infos) ?></p>
+			    
 			  <?php if(isset($user)): ?>
 			  <div class="float-right p-2">
 			   <button class="btn btn-danger m-1" data-toggle="modal" data-target="#exampleModalCenter" data-id="<?php echo($product->id_product) ?>">Delete</button>
@@ -89,7 +89,7 @@
 			  </div>
 			  <?php if($product->prix > 0): ?>
 			  <div class="card-footer">
-			    <h6 class="text-center"><?php echo "$product->prix DA"; ?></h6>
+			    <h6 class="text-center text-second"><?php echo "$product->prix DA"; ?></h6>
 			  </div>
 			  <?php endif; ?>
 			</div>
@@ -102,7 +102,7 @@
 			$data = $this->product->Latest();
 			?>
 			<?php if($data): ?>
-			<div class="h2 my-3 ml-2 animated fadeInUp"><?php echo $this->text['latest']; ?></div>
+			<div class="h2 text-center my-3 ml-2 text-second animated fadeInUp"><?php echo $this->text['latest']; ?></div>
 			<div class="container animated fadeInUp">
 			  <div class="autoplay">
 			  	<?php foreach($data as $product){
@@ -120,9 +120,9 @@
 
 			?>
 			<?php if($categ): ?>
-			<div class="m-4 category-img animated fadeInLeft">
-			  <div class="container py-5 bg-soft-dark">
-			    <div class="h1 text-center text-light"><?php echo $this->text['bycateg']; ?></div>
+			<div class="m-4 animated fadeInLeft">
+			  <div class="container py-5">
+			    <div class="h1 text-center text-purp"><?php echo $this->text['bycateg']; ?></div>
 			  </div>
 			</div>
 
@@ -130,15 +130,15 @@
 				<?php $data = $this->product->GetLatestByCateg($cat->id_category); ?>
 				<?php if($data): ?>
 
-			<div class="h2 my-3 ml-2 animated fadeInUp"><?php echo ucwords($cat->nom_category); ?></div>
+			<div class="h2 my-3 ml-2 text-center text-second animated fadeInUp"><?php echo ucwords($cat->nom_category); ?></div>
 			<div class="container animated fadeInUp">
 			  <div class="category">
 			  	<?php foreach ($data as $product) { 
 			  		$this->ProductCard($product);
 			  	} ?>
 			    <div class="mx-2 bg-white d-flex align-items-center justify-content-center">
-			      <a href="<?php echo(PUBLIC_URL.'product/search/1/'.$cat->id_category) ?>" class="">
-			        <i class="fas fa-3x fa-plus"></i>
+			      <a class="text-second" href="<?php echo(PUBLIC_URL.'product/search/1/'.$cat->id_category) ?>" class="">
+			        <i class="fas fa-2x fa-plus"></i>
 			      </a>
 			    </div>
 			  </div>
@@ -226,7 +226,7 @@
 				         <input type="number" id="qte" name="qte" class="form-control" placeholder="<?php echo($this->text['quantity']) ?>" min="1" required>
 				       </div>
 				       <div class="col">
-				         <button class="btn btn-primary" id="add_to_basket"><?php echo $this->text['add']; ?></button>
+				         <button class="btn btn-purp" id="add_to_basket"><?php echo $this->text['add']; ?> <i class="fas fa-cart-plus"></i></button>
 				       </div>
 				     </div>
 				   </form>
@@ -249,7 +249,7 @@
 				      </div>
 				      <div class="modal-footer">
 				        <button type="button" class="btn btn-secondary" data-dismiss="modal"><?php echo $this->text['continue']; ?></button>
-				        <a href="<?php echo(PUBLIC_URL.'checkout') ?>" class="btn btn-primary"><?php echo $this->text['final']; ?></a>
+				        <a href="<?php echo(PUBLIC_URL.'checkout') ?>" class="btn btn-purp"><?php echo $this->text['final']; ?></a>
 				      </div>
 				    </div>
 				  </div>

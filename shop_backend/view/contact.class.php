@@ -43,9 +43,9 @@
 			$data = $this->contact->GetInfos();
 			?>
 
-			<div class="m-4 contact-img animated fadeInLeft">
-			  <div class="container py-5 bg-soft-dark">
-			    <div class="h1 text-center text-light" id="contact"><?php echo $this->text['contactus']; ?></div>
+			<div class="m-4 animated fadeInLeft">
+			  <div class="container py-5">
+			    <div class="h1 text-center text-purp" id="contact"><?php echo $this->text['contactus']; ?></div>
 			  </div>
 			</div>
 			<div class="row m-2 py-2">
@@ -57,7 +57,7 @@
 			      <div class="col-md-5 pt-5 mt-5 font-weight-bold">
 			        <table class="mb-5" width="100%">
 			          <tr>
-			            <td align="center" rowspan="3" valign="top" width="20%"><i class="fa fa-paper-plane fa-2x text-primary"></i></td>
+			            <td align="center" rowspan="3" valign="top" width="20%"><i class="fa fa-paper-plane fa-2x text-purp"></i></td>
 			            <td class="h2 pb-2"><?php echo $this->text['contact']; ?></td>
 			          </tr>
 			          <tr>
@@ -69,7 +69,7 @@
 			        </table>
 			        <table class="mb-5" width="100%">
 			          <tr>
-			            <td align="center" rowspan="3" valign="top" width="20%"><i class="fa fa-map-marker-alt fa-2x text-primary"></i></td>
+			            <td align="center" rowspan="3" valign="top" width="20%"><i class="fa fa-map-marker-alt fa-2x text-purp"></i></td>
 			            <td class="h2 pb-2"><?php echo $this->text['address']; ?></td>
 			          </tr>
 			          <tr>

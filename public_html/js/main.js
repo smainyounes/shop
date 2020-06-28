@@ -1,7 +1,7 @@
 $( document ).ready(function() {
     $(".autoplay").slick({
       slidesToShow: 5,
-      slidesToScroll:41,
+      slidesToScroll: 1,
       autoplay: true,
       autoplaySpeed: 2000,
       responsive: [

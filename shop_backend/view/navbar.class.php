@@ -93,7 +93,7 @@
 
 			    <title>BoxDZ | Shop</title>
 			  </head>
-			  <body class="d-flex flex-column bg-secondary">
+			  <body class="d-flex flex-column bg-light">
 
 			<?php
 		}
@@ -102,36 +102,27 @@
 		{
 			?>
 
-			<div class="container p-0 search">
-			  <div class="container-fluid" style="background: linear-gradient(rgba(0,0,0,.2), rgba(0,0,0,.8));">
+			<div class="container my-4 p-0">
+			  <div class="container-fluid">
 			    <div class="container">
 			      <div class="row">
 			        <div class="col-md-4 text-center animated fadeInLeft">
 			          <img src="<?php echo(PUBLIC_URL) ?>img/boxdzlogo.png" class="img-fluid">
 			        </div>
 			        <div class="col-md-8 animated fadeInRight">
-			          <form class="w-100 h-100 d-flex align-items-center justify-content-center" method="GET">
-			            <div class="form-group">
-			              <div class="input-group input-group-lg" style="max-width: 900px;">
-			                <input type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-lg" name="keyword" placeholder="Exemple: something">
-			                <div class="input-group-append">
-			                  <span class="input-group-text fas fa-search" id="inputGroup-sizing-lg"></span>
-			                </div>
-			              </div>
-			            </div>
-			            <div class="form-group mx-2">
-			              <select name="categ" class="form-control form-control-lg">
-			                <option value="0" selected><?php echo $this->text['all']; ?></option>
-			                <?php if($this->data): ?>
-			                  <?php foreach($this->data as $categ): ?>
-			                <option value="<?php echo($categ->id_category) ?>"><?php echo $categ->nom_category; ?></option>
-			                  <?php endforeach; ?>
-			                <?php endif; ?>
-			              </select>
-			            </div>
-			            <div class="form-group">
-			              <button class="btn btn-primary btn-lg"><?php echo $this->text['search']; ?></button>
-			            </div>
+			          <form class="w-100 h-100 mt-5" method="GET">
+			            
+			          	<div class="form-group">
+			          	   <div class="input-group input-group-lg" style="max-width: 900px;">
+			          	      <input type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-lg" name="keyword" placeholder="Exemple: something" style="         	         border-radius: 50px 0 0 50px;">
+			          	      <div class="input-group-append">
+			          	         <button class="input-group-text fas fa-search btn-purp" id="inputGroup-sizing-lg" style="border-radius: 0 50px 50px 0;"></button>
+			          	      </div>
+			          	   </div>
+			          	</div>
+
+			          	<input type="text" name="categ" value="0" hidden>
+
 			          </form>
 			        </div>
 			      </div>
@@ -141,7 +132,7 @@
 			</div>
 
 
-			<div class="container shadow bg-light py-2" id="page-content">
+			<div class="container bg-light py-2" id="page-content">
 
 			<?php
 		}
@@ -152,7 +143,7 @@
 
 			?>
 
-			<nav class="navbar navbar-expand-md navbar-dark bg-dark shadow fixed-top">
+			<nav class="navbar navbar-expand-md navbar-dark bg-purp shadow fixed-top">
 			  <a class="navbar-brand" href="<?php echo(PUBLIC_URL.'product/list') ?>">Admin</a>
 			  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
 			    <span class="navbar-toggler-icon"></span>
@@ -205,7 +196,7 @@
 			$data = $this->data;
 			?>
 
-			<nav class="navbar navbar-expand-md navbar-dark bg-dark shadow fixed-top">
+			<nav class="navbar navbar-expand-md navbar-dark bg-purp shadow fixed-top">
 			  <div >
 			  	<div class="nav-item dropdown ml-auto mob" id="cart">
 			  		<?php $basket->Basket(); ?>
@@ -249,7 +240,7 @@
 			      	<?php $basket->Basket(); ?>
 			      </li>
 			      <li class="nav-item">
-			        <a href="<?php echo(PUBLIC_URL.'login') ?>" class="btn btn-secondary"><?php echo $this->text['login']; ?></a>
+			        <a href="<?php echo(PUBLIC_URL.'login') ?>" class="btn btn-outline-secondary"><?php echo $this->text['login']; ?> <i class="fas fa-sign-in-alt"></i></a>
 			      </li>
 			    </ul>
 			  </div>

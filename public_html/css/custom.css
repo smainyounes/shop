@@ -126,3 +126,93 @@ html {
     left: auto;
   }
 }
+
+/*bg color*/
+
+.bg-purp{
+  background-color: #390238;
+}
+
+/*button color*/
+
+.btn-purp{
+  color: #fff0e3;
+  background-color: #390238;
+  border-color: #390238;
+}
+
+.btn-purp:hover{
+  background-color: #8a0b87;
+  border-color: #8a0b87;
+  color: #fff;
+}
+
+.btn-purp:not(:disabled):not(.disabled).active, .btn-warning:not(:disabled):not(.disabled):active, .show>.btn-warning.dropdown-toggle{
+  background-color: #d7690f;
+  border-color: #cf5d00;
+}
+
+.btn-purp.focus, .btn-purp:focus {
+    box-shadow: 0 0 0 0.2rem rgba(144, 3, 179, 0.5);
+}
+
+/*light hover*/
+
+.light-hover{
+  color: rgba(255,255,255,.5);
+}
+
+.light-hover:hover{
+  color: rgba(255,255,255,.75);
+}
+
+.text-purp{
+  color: #8a0b87!important;
+}
+
+
+
+.text-second{
+  color: #1da8a0;
+}
+
+.black-link{
+  color: black;
+  text-decoration: none;
+}
+
+.black-link:hover{
+  color: black;
+  text-decoration: none;
+}
+
+/*carousel*/
+@media screen and (min-width: 768px) {
+  #carousel{
+    height: 500px; 
+  }
+}
+
+@media screen and (max-width: 768px) {
+  #carousel{
+    height: 220px; 
+  }
+}
+
+a{
+  color: #390238;
+  text-decoration: none;
+}
+
+a:hover{
+  color: #8a0b87;
+  text-decoration: none;
+}
+
+.card-img-top {
+  object-fit: cover; /* Do not scale the image */
+  object-position: center; /* Center the image within the element */
+  width: 100%;
+  max-height: 250px;
+  margin-bottom: 1rem;
+}

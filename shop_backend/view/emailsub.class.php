@@ -50,7 +50,7 @@
 								  	<input type="email" name="mail_sub" class="form-control" placeholder="Exemple@boxdz.com" required>
 								  </div>
 								  <div class="col-md-4 p-2">
-								  	<button class="btn btn-primary form-control"><?php echo $this->text['sub']; ?></button>
+								  	<button class="btn btn-purp form-control"><?php echo $this->text['sub']; ?> <i class="far fa-envelope"></i></button>
 								  </div>
 								  
 							</form>

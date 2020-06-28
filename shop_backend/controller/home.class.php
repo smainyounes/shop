@@ -26,6 +26,9 @@
 			// include header
 			include BACKEND_URL."includes/header.inc.php";
 
+			$v = new view_carousel();
+			$v->HomeCarousel();
+
 			// call latest
 			$this->product->Latest();
 

@@ -126,12 +126,12 @@
 								
 								<tr>
 									<td class="h3"><?php echo $this->text['total']; ?></td>
-									<td class="text-right h3 text-primary"><?php echo $total." DA"; ?></td>
+									<td class="text-right h3 text-second"><?php echo $total." DA"; ?></td>
 								</tr>
 							</tbody>
 						</table>
 						<div class="form-group">
-							<button class="btn btn-primary btn-block"><?php echo $this->text['confirm']; ?></button>
+							<button class="btn btn-purp btn-block"><?php echo $this->text['confirm']; ?></button>
 						</div>
 					</div>
 				</div>
@@ -159,7 +159,7 @@
 			?>
 
 	      	
-		        <a class="nav-link dropdown-toggle text-muted pl-0" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+		        <a class="nav-link dropdown-toggle light-hover pl-0" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
 		          <i class="fa fa-shopping-cart"></i>
 		          <?php if($basket->Size() > 0): ?>
 		          <span class="qty"><?php echo $basket->Size(); ?></span>
@@ -223,7 +223,7 @@
 			        <button type="button" class="btn btn-secondary" data-dismiss="modal"><?php echo $this->text['no']; ?></button>
 			        <div>
 			          <input type="number" name="id_prod" id="prod" hidden>
-			          <button class="btn btn-primary" id="delete_panier"><?php echo $this->text['yes']; ?></button>
+			          <button class="btn btn-purp" id="delete_panier"><?php echo $this->text['yes']; ?></button>
 			        </div>
 			      </div>
 			    </div>
